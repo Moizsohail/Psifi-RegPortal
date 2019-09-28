@@ -1,5 +1,14 @@
 (function($) {
-    number_of_tabs = 1
+    number_of_tabs = 0
+    function add_collapsible(){
+        $(this).toggleClass('active');
+        content = $(this).next();        
+        if(content.css('max-height')!="0px")
+            content.css('max-height',"0px")
+        else
+            content.css('max-height',content.prop('scrollHeight') + 'px')
+    }
+    $(document).on('click','#temp-part-header',add_collapsible)
     function appendTab(){
         console.log(number_of_tabs);
         if (number_of_tabs >= 5){
@@ -10,11 +19,16 @@
         var participant_header = $('#temp-part-header').clone();
         var participant_content = $('#temp-part-content').clone();
         participant_header.toggleClass('active',false);
-        participant_content.css('max-height','0px');
+        participant_content.css('max-height',null);
+        participant_header.css('display','flex');
         participant_header.attr('id','');
+        participant_content.css('display','block');
         participant_content.attr('id','');
         
+        
         $('#part-group').append(participant_header);
+        $(document).on('click','.collapsible',add_collapsible)
+        
         $('#part-group').append(participant_content);
         return true;
     }
@@ -25,6 +39,7 @@
         }
         
         if($(this).parent().attr('id')=='temp-part-header'){
+            console.log('hii');
             $(this).parent().next().next().attr('id','temp-part-header')
             $(this).parent().next().next().next().attr('id','temp-part-content')
         }
@@ -33,7 +48,7 @@
         $(this).parent().next().remove()
         $(this).parent().remove()
     }
-    for(var i=0;i<2;i++){
+    for(var i=0;i<3;i++){
         appendTab();
     }
     $(document).on('click', '#add-participants', appendTab );

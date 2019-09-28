@@ -136,11 +136,11 @@
                         <div class="fieldset-content collapse-content">
                             <div class="form-row" id="part-group">
                                 <div id="add-participants">Add</div>
-                                <div class="collapsible" id="temp-part-header">
-                                    <div >Head Team Member</div>
+                                <div class="collapsible" style="display: none" id="temp-part-header">
+                                    <div>Team Member</div>
                                     <div class="remove-button">Remove</div>
                                 </div>
-                                <div class="content" id="temp-part-content">
+                                <div class="content" style="display: none" id="temp-part-content">
                                   <div class="form-row">
                                     <label class="form-label">Name</label>
                                     <div class="form-flex">
@@ -198,20 +198,20 @@
     <script src="vendor/wnumb/wNumb.js"></script>
     <script src="js/main.js"></script>
     <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+    // var coll = document.getElementsByClassName("collapsible");
+    // var i;
 
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        } 
-      });
-    }
+    // for (i = 0; i < coll.length; i++) {
+    //   coll[i].addEventListener("click", function() {
+    //     this.classList.toggle("active");
+    //     var content = this.nextElementSibling;
+    //     if (content.style.maxHeight){
+    //       content.style.maxHeight = null;
+    //     } else {
+    //       content.style.maxHeight = content.scrollHeight + "px";
+    //     } 
+    //   });
+    // }
     </script>
 </body>
 
