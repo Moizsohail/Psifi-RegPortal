@@ -1,7 +1,7 @@
 (function($) {
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="S" || $(this).val()=="U"){
-            
+
         }
         else if($(this).val()=="P"){
 
@@ -69,6 +69,9 @@
         rules: {
             email: {
                 email: true,
+            },
+            institPhone: {
+                number:true,
             }
         },
         onfocusout: function(element) {
@@ -127,7 +130,7 @@
         url: "",
         date: "",
         dateISO: "",
-        number: "",
+        number: "Incorrect Number",
         digits: "",
         creditcard: "",
         equalTo: ""
