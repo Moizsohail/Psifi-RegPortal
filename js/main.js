@@ -79,11 +79,11 @@
             $(element).valid();
         },
     });
-    form.children("div").steps({
+    form.children("#tabs").steps({
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
-        startIndex: 1,
+        
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
@@ -148,37 +148,6 @@
         minimumAge: 0,
         maximumAge: 120
     });
-    var marginSlider = document.getElementById('slider-margin');
-    if (marginSlider != undefined) {
-        noUiSlider.create(marginSlider, {
-              start: [1100],
-              step: 100,
-              connect: [true, false],
-              tooltips: [true],
-              range: {
-                  'min': 100,
-                  'max': 2000
-              },
-              pips: {
-                    mode: 'values',
-                    values: [100, 2000],
-                    density: 4
-                    },
-                format: wNumb({
-                    decimals: 0,
-                    thousand: '',
-                    prefix: '$ ',
-                })
-        });
-        var marginMin = document.getElementById('value-lower'),
-	    marginMax = document.getElementById('value-upper');
-
-        marginSlider.noUiSlider.on('update', function ( values, handle ) {
-            if ( handle ) {
-                marginMax.innerHTML = values[handle];
-            } else {
-                marginMin.innerHTML = values[handle];
-            }
-        });
-    }
+    
+    
 })(jQuery);
