@@ -1,4 +1,13 @@
 (function($) {
+    $(document).on("change","#applyingThrough",function(){
+        if($(this).val()=="S" || $(this).val()=="U"){
+            
+        }
+        else if($(this).val()=="P"){
+
+        }
+    })
+    
     number_of_tabs = 0
     function add_collapsible(){
         $(this).toggleClass('active');
@@ -10,7 +19,6 @@
     }
     $(document).on('click','#temp-part-header',add_collapsible)
     function appendTab(){
-        console.log(number_of_tabs);
         if (number_of_tabs >= 5){
             alert("Can't have more than 5 participants");
             return false;
