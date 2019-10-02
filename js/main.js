@@ -1,4 +1,5 @@
 (function($) {
+    appendCountryOptions('.country-option');
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="S" || $(this).val()=="U"){
 
@@ -82,6 +83,7 @@
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
+        startIndex: 1,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
