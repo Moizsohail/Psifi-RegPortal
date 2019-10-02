@@ -120,27 +120,27 @@
     <div class="main">
 
         <div class="container">
-            <form method="POST" id="signup-form" class="signup-form" action="#">
+            <form method="POST" id="signup-form" class="signup-form" action="http://134.209.151.194:3000/api/register/submit">
                 
                 <h2>Register</h2>
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
-                    <input type="text"  name="emailAddress"/>
+                    <input type="text"  name="email"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Team Name</label>
-                    <input type="text"  name="teamName"/>
+                    <input type="text"  name="name"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="text"  name="emailAddress"/>
+                    <input type="text"  name="password"/>
                 </div>
                 <div class="form-group">
                     <span class="text-input">Already Have An Account? 
-                        <a href="login.html">Click Here</a></span>
+                        <a href="login.html" >Click Here</a></span>
                 </div>
                 <div class="form-group center">
-                    <a class="cbtn">Sign Up</a>
+                    <a class="cbtn" id="regSubmit">Sign Up</a>
                 </div>
             </form>    
         </div>

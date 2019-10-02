@@ -1,4 +1,24 @@
 (function($) {
+    $(document).on('click',"#regSubmit",function(){
+        console.log(JSON.stringify($('#signup-form').serializeArray()));
+        let payload  = {};
+        $('#signup-form').serializeArray().forEach(function(a){payload[a['name']]=a['value']})
+        payload = JSON.stringify(payload)
+        $.ajax({
+            url:"http://134.209.151.194:3000/api/register/submit",
+            type: "POST",
+            data: payload,
+            contentType: "application/json",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
+            crossDomain: true,
+            dataType: 'json',
+            success:function(data, textStatus, jqXHR) {alert("success");},
+            error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+        })
+    })  
+    
     appendCountryOptions('.country-option');
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="S" || $(this).val()=="U"){
