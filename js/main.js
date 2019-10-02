@@ -1,19 +1,25 @@
  (function($) {
-    $(document).on('click',"#regSubmit",function(){
+    function serialize(form){
         let payload  = {};
-        $('#signup-form').serializeArray().forEach(function(a){
-            payload[a['name']] = a['value']     
-            // (typeof a['name'])
-            // if((typeof payload[a['name']]) ==undefined)
-            //     payload[a['name']]=a['value']
-            // else{
-            //     if(typeof a['name']!='Object'){
-            //         payload[a['name']]=[payload[a['name']]]
-            //     }
-            //     payload[a['name']]=payload[a['name']].concat(a['value'])
+        
+        $('form input,form select').not('#temp-part-content input,#temp-part-content select').serializeArray().forEach(function(a){
+            //payload[a['name']] = a['value']     
+            if(payload[a['name']] == undefined){
+            payload[a['name']]=a['value']
+            }
+            else{
                 
-            // }
+                if(typeof payload[a['name']]!='object')
+                    payload[a['name']]=[].concat(payload[a['name']])
+                
+                payload[a['name']]=payload[a['name']].concat(a['value'])        
+            }
         })
+        console.log(payload['tm_first_name'])
+        return JSON.stringify(payload)
+    }
+    $(document).on('click',"#regSubmit",function(){
+        let payload = serialize('#signup-form')
         console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({
@@ -23,9 +29,6 @@
             contentType: "application/json",
             dataType: 'json',
             success:function(data, textStatus, jqXHR) {
-                console.log(data['status']==200);
-                console.log(textStatus)
-                console.log(jqXHR)
                 if(data['status']==200){
                     window.location.href='success.html'
                 }
@@ -35,7 +38,7 @@
     })
     $(document).on('click',"#loginSubmit",function(){
         let payload  = {};
-        $('#signup-form').serializeArray().forEach(function(a){
+        $('#login-form').serializeArray().forEach(function(a){
             payload[a['name']] = a['value']     
             // (typeof a['name'])
             // if((typeof payload[a['name']]) ==undefined)
@@ -51,13 +54,18 @@
         console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({
-            url:"http://134.209.151.194:3000/api/register/submit",
+            url:"http://134.209.151.194:3000/api/login/submit",
             type: "POST",
             data: payload,
             contentType: "application/json",
             dataType: 'json',
             success:function(data, textStatus, jqXHR) {
                 console.log(data)
+                if(data['status']==200){
+                    sessionStorage['token'] = data['token'];
+                    window.location.href="portal.html";
+
+                }
             },
             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
         })
@@ -126,7 +134,7 @@
     }
     $(document).on('click', '#add-participants', appendTab );
     $(document).on('click', '.remove-button',deleteTab);
-    var form = $("#signup-form");
+    var form = $("#portal-form");
     form.validate({
         errorPlacement: function errorPlacement(error, element) {
             element.before(error);
@@ -181,7 +189,24 @@
             return form.valid();
         },
         onFinished: function(event, currentIndex) {
-            alert('Submited');
+            let payload  = serialize('#portal-form')
+            console.log(payload)
+            $.ajax({
+                url:"http://134.209.151.194:3000/api/login/submit",
+                type: "POST",
+                data: payload,
+                contentType: "application/json",
+                dataType: 'json',
+                success:function(data, textStatus, jqXHR) {
+                    console.log(data)
+                    if(data['status']==200){
+                        sessionStorage['token'] = data['token'];
+                        window.location.href="portal.html";
+
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+        })
         },
         onStepChanged: function(event, currentIndex, priorIndex) {
 
