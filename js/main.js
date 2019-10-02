@@ -139,9 +139,9 @@
     });
 
     $.dobPicker({
-        daySelector: '#birth_date',
-        monthSelector: '#birth_month',
-        yearSelector: '#birth_year',
+        daySelector: '.birth_date',
+        monthSelector: '.birth_month',
+        yearSelector: '.birth_year',
         dayDefault: '',
         monthDefault: '',
         yearDefault: '',

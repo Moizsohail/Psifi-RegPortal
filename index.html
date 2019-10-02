@@ -65,7 +65,7 @@
             width: 95%;
             display: block;
             overflow: hidden;
-            transition: max-height 0.2s ease-out;
+            transition: max-height 0.5s ease-out;
         }
         
         .form-option-group select {
@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 <label for="applyingThrough" name="applyingThrough" class="form-label">Are you applying through </label>
                                 <div class="form-option-group">
-                                    <select required id="applyingThrough">
+                                    <select  id="applyingThrough">
                                         <option ></option>
                                         <option value="S">School</option>
                                         <option value="P">Privately</option>
@@ -106,7 +106,7 @@
                             <div class="form-group">
                                 <label for="applyingThrough" class="form-label">Will a Faculty Adviser accompany you to LUMS?</label>
                                 <div class="form-option-group">
-                                    <select name="facultyAdvisor" required>
+                                    <select name="facultyAdvisor" >
                                         <option ></option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -116,11 +116,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Instituition Name</label>
-                                <input type="text" required name="institName" />
+                                <input type="text"  name="institName" />
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Instituition City</label>
-                                <input type="text" required name="institCity" />
+                                <input type="text"  name="institCity" />
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">Instituition Email</label>
@@ -138,9 +138,9 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Complete Address of Institution</label>
-                                <input type="text" required name="addrln1" />
+                                <input type="text"  name="addrln1" />
                                 <span class="text-input">Address</span>
-                                <input type="text" required name="addrCity" />
+                                <input type="text"  name="addrCity" />
                                 <span class="text-input">City</span></span>
                                 <div class="form-option-group">
                                     <select class="country-option">
@@ -154,11 +154,11 @@
                                 <label class="form-label">Name</label>
                                 <div class="form-flex">
                                     <div class="form-group">
-                                        <input type="text" required name="first_name" id="first_name" />
+                                        <input type="text"  name="first_name" id="first_name" />
                                         <span class="text-input">First</span>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" required name="last_name" id="last_name" />
+                                        <input type="text"  name="last_name" id="last_name" />
                                         <span class="text-input">Last</span>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@
                                 <label for="birth_date" class="form-label">Birth Date</label>
                                 <div class="form-option-group">
                                     <div class="form-date-item">
-                                        <select id="birth_month" required name="birth_month"></select>
+                                        <select id="birth_month"  name="birth_month"></select>
                                         <span class="text-input">MM</span>
                                     </div>
                                     <div class="form-date-item">
@@ -220,60 +220,98 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <div class="form-group">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" name="email" id="email" />
-                                            <span class="text-input">Example :<span> Jeff@gmail.com</span></span>
+                                    <div class="form-date">
+                                        <label for="birth_date" class="form-label">Birth Date</label>
+                                        <div class="form-option-group">
+                                            <div class="form-date-item">
+                                                <select class="birth_month"  name="birth_month"></select>
+                                                <span class="text-input">MM</span>
+                                            </div>
+                                            <div class="form-date-item">
+                                                <select class="birth_date" name="birth_date"></select>
+                                                <span class="text-input">DD</span>
+                                            </div>
+                                            <div class="form-date-item">
+                                                <select class="birth_year" name="birth_year"></select>
+                                                <span class="text-input">YYYY</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="phone" class="form-label">Mobile Number</label>
-                                            <input type="number" name="institPhone" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="applyingThrough" class="form-label">Gender</label>
-                                            <div class="form-option-group">
-                                                <select name="gender" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" name="email" id="email" />
+                                        <span class="text-input">Example :<span> Jeff@gmail.com</span></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Mobile Number</label>
+                                        <input type="number" name="institPhone" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="applyingThrough" class="form-label">Gender</label>
+                                        <div class="form-option-group">
+                                            <select name="gender" >
                                                     <option ></option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
                                                 </select>
-                                                <span class="text-input"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="applyingThrough" class="form-label">Do you require accomodation?</label>
-                                                <div class="form-option-group">
-                                                    <select name="Acommodation" required>
+                                            <span class="text-input"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="applyingThrough" class="form-label">Do you require accomodation?</label>
+                                            <div class="form-option-group">
+                                                <select name="Acommodation" >
                                                     <option ></option>
                                                     <option value="Y">Yes</option>
                                                     <option value="N">No</option>
                                                 </select>
-                                                    <span class="text-input"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Complete Address of Institution</label>
-                                                    <input type="text" required name="addrln1" />
-                                                    <span class="text-input">Address</span>
-                                                    <input type="text" required name="addrCity" />
-                                                    <span class="text-input">City</span></span>
-                                                    <div class="form-option-group">
-                                                        <select class="country-option"></select>
-                                                    </div>
-                                                    <span class="text-input">Country</span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="cnic" class="form-label">CNIC/B-form Number</label>
-                                                    <input type="number" name="cnic"/>
-                                                </div>
-
+                                                <span class="text-input"></span>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Complete Address of Institution</label>
+                                                <input type="text"  name="addrln1" />
+                                                <span class="text-input">Address</span>
+                                                <input type="text"  name="addrCity" />
+                                                <span class="text-input">City</span></span>
+                                                <div class="form-option-group">
+                                                    <select class="country-option"></select>
+                                                </div>
+                                                <span class="text-input">Country</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cnic" class="form-label">CNIC/B-form Number</label>
+                                                <input type="number" name="cnic" />
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="form-label">Gaurdian Name</label>
+                                                <div class="form-flex">
+                                                    <div class="form-group">
+                                                        <input type="text" name="first_name" id="first_name" />
+                                                        <span class="text-input">First</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" name="last_name" id="last_name" />
+                                                        <span class="text-input">Last</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cnic" class="form-label">Gaurdian Number </label>
+                                                <input type="number" name="gaurdianName" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cnic" class="form-label">Gaurdian Number </label>
+                                                <input type="number" name="gaurdianName" />
+                                            </div>
+                                            
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
+                        </div>
                     </fieldset>
 
-                    <h3>Set Financial Goals</h3>
+                    <h3>Events Information</h3>
                     <fieldset>
                         <h2>Set Financial Goals</h2>
                         <p class="desc">Set up your money limit to reach the future plan</p>
@@ -294,34 +332,34 @@
             </form>
             </div>
 
-            </div>
+        </div>
 
-            <!-- JS -->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-            <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
-            <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
-            <script src="vendor/minimalist-picker/dobpicker.js"></script>
-            <script src="vendor/nouislider/nouislider.min.js"></script>
-            <script src="vendor/wnumb/wNumb.js"></script>
-            <script src="js/country.js"></script>
-            <script src="js/main.js"></script>
-            <script>
-                // var coll = document.getElementsByClassName("collapsible");
-                // var i;
+        <!-- JS -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+        <script src="vendor/minimalist-picker/dobpicker.js"></script>
+        <script src="vendor/nouislider/nouislider.min.js"></script>
+        <script src="vendor/wnumb/wNumb.js"></script>
+        <script src="js/country.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            // var coll = document.getElementsByClassName("collapsible");
+            // var i;
 
-                // for (i = 0; i < coll.length; i++) {
-                //   coll[i].addEventListener("click", function() {
-                //     this.classList.toggle("active");
-                //     var content = this.nextElementSibling;
-                //     if (content.style.maxHeight){
-                //       content.style.maxHeight = null;
-                //     } else {
-                //       content.style.maxHeight = content.scrollHeight + "px";
-                //     } 
-                //   });
-                // }
-            </script>
+            // for (i = 0; i < coll.length; i++) {
+            //   coll[i].addEventListener("click", function() {
+            //     this.classList.toggle("active");
+            //     var content = this.nextElementSibling;
+            //     if (content.style.maxHeight){
+            //       content.style.maxHeight = null;
+            //     } else {
+            //       content.style.maxHeight = content.scrollHeight + "px";
+            //     } 
+            //   });
+            // }
+        </script>
 </body>
 
 </html>
