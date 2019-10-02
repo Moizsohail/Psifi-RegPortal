@@ -1,20 +1,64 @@
-(function($) {
+ (function($) {
     $(document).on('click',"#regSubmit",function(){
-        console.log(JSON.stringify($('#signup-form').serializeArray()));
         let payload  = {};
-        $('#signup-form').serializeArray().forEach(function(a){payload[a['name']]=a['value']})
+        $('#signup-form').serializeArray().forEach(function(a){
+            payload[a['name']] = a['value']     
+            // (typeof a['name'])
+            // if((typeof payload[a['name']]) ==undefined)
+            //     payload[a['name']]=a['value']
+            // else{
+            //     if(typeof a['name']!='Object'){
+            //         payload[a['name']]=[payload[a['name']]]
+            //     }
+            //     payload[a['name']]=payload[a['name']].concat(a['value'])
+                
+            // }
+        })
+        console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({
             url:"http://134.209.151.194:3000/api/register/submit",
             type: "POST",
             data: payload,
             contentType: "application/json",
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            },
-            crossDomain: true,
             dataType: 'json',
-            success:function(data, textStatus, jqXHR) {alert("success");},
+            success:function(data, textStatus, jqXHR) {
+                console.log(data['status']==200);
+                console.log(textStatus)
+                console.log(jqXHR)
+                if(data['status']==200){
+                    window.location.href='success.html'
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+        })
+    })
+    $(document).on('click',"#loginSubmit",function(){
+        let payload  = {};
+        $('#signup-form').serializeArray().forEach(function(a){
+            payload[a['name']] = a['value']     
+            // (typeof a['name'])
+            // if((typeof payload[a['name']]) ==undefined)
+            //     payload[a['name']]=a['value']
+            // else{
+            //     if(typeof a['name']!='Object'){
+            //         payload[a['name']]=[payload[a['name']]]
+            //     }
+            //     payload[a['name']]=payload[a['name']].concat(a['value'])
+                
+            // }
+        })
+        console.log(payload)
+        payload = JSON.stringify(payload)
+        $.ajax({
+            url:"http://134.209.151.194:3000/api/register/submit",
+            type: "POST",
+            data: payload,
+            contentType: "application/json",
+            dataType: 'json',
+            success:function(data, textStatus, jqXHR) {
+                console.log(data)
+            },
             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
         })
     })  
