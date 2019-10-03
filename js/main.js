@@ -1,4 +1,10 @@
  (function($) {
+    $(document).on('keypress','.wordCount',function(e){
+        if($(this).val().length +2 > 150){
+            e.preventDefault()
+        }
+        $(this).next().html($(this).val().length+1+'/150 words')
+    })
     $(document).on('change','#noEvents',function(x){
             console.log(5)
             switch($(this).val()){
@@ -49,6 +55,7 @@
             contentType: "application/json",
             dataType: 'json',
             success:function(data, textStatus, jqXHR) {
+                console.log(data)
                 if(data['status']==200){
                     window.location.href='success.html'
                 }
