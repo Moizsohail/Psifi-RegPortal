@@ -96,9 +96,9 @@
                         </p>
                         <div class="fieldset-content">
                             <div class="form-group">
-                                <label for="applyingThrough" name="applyingThrough" class="form-label">Are you applying through </label>
+                                <label for="applyingThrough"  class="form-label">Are you applying through </label>
                                 <div class="form-option-group">
-                                    <select  id="applyingThrough">
+                                    <select  id="applyingThrough" name="applyingThrough">
                                         <option ></option>
                                         <option value="S">School</option>
                                         <option value="P">Privately</option>
@@ -147,7 +147,7 @@
                                 <input type="text"  name="addrCity" />
                                 <span class="text-input">City</span></span>
                                 <div class="form-option-group">
-                                    <select class="country-option">
+                                    <select class="country-option" name="countryTeam">
                                     
                                 </select>
                                 </div>
@@ -199,17 +199,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" name="email" id="email" />
+                                        <input type="email" name="partemail" id="email" />
                                         <span class="text-input">Example :<span> Jeff@gmail.com</span></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="form-label">Mobile Number</label>
-                                        <input type="number" name="institPhone" />
+                                        <input type="number" name="partPhone" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="applyingThrough" class="form-label">Gender</label>
+                                        <label for="partGender" class="form-label">Gender</label>
                                         <div class="form-option-group">
-                                            <select name="gender" >
+                                            <select name="partGender" >
                                                     <option ></option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
@@ -219,7 +219,7 @@
                                         <div class="form-group">
                                             <label for="applyingThrough" class="form-label">Do you require accomodation?</label>
                                             <div class="form-option-group">
-                                                <select name="Acommodation" >
+                                                <select name="partAcommodation" >
                                                     <option ></option>
                                                     <option value="Y">Yes</option>
                                                     <option value="N">No</option>
@@ -233,13 +233,13 @@
                                                 <input type="text"  name="addrCity" />
                                                 <span class="text-input">City</span></span>
                                                 <div class="form-option-group">
-                                                    <select class="country-option"></select>
+                                                    <select class="country-option" name="partCountry"></select>
                                                 </div>
                                                 <span class="text-input">Country</span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cnic" class="form-label">CNIC/B-form Number</label>
-                                                <input type="number" name="cnic" />
+                                                <input type="number" name="partCnic" />
                                             </div>
                                             <div class="form-row">
                                                 <label class="form-label">Gaurdian Name</label>
@@ -256,13 +256,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cnic" class="form-label">Gaurdian Number </label>
-                                                <input type="number" name="gaurdianName" />
+                                                <input type="number" name="gaurdianNumber" />
                                             </div>
-                                            <div class="form-group">
-                                                <label for="cnic" class="form-label">Gaurdian Number </label>
-                                                <input type="number" name="gaurdianName" />
-                                            </div>
-                                            
                                         </div>
                                     </div>
                                 </div>

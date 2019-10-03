@@ -91,7 +91,7 @@
         })
     })  
     
-    appendCountryOptions('.country-option');
+    appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="S" || $(this).val()=="U"){
 
