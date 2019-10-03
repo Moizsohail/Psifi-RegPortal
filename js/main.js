@@ -1,8 +1,24 @@
  (function($) {
+    $(document).on('change','#noEvents',function(x){
+            console.log(5)
+            switch($(this).val()){
+                case "2":
+                    $("#eventPref3").parent().hide()
+                    $("#eventPref3").parent().prev().hide()
+                    $("#eventPref3").toggleClass('removed',true)
+                    break;
+                case "3":
+                    $("#eventPref3").parent().show()
+                    $("#eventPref3").parent().prev().show()
+                    $("#eventPref3").toggleClass('removed',false)
+                    break;
+            }
+        })
     function serialize(form){
         let payload  = {};
         
-        $('form input,form select').not('#temp-part-content input,#temp-part-content select').serializeArray().forEach(function(a){
+        $('form input,form select').not(`#temp-part-content input,
+            #temp-part-content select, .removed`).serializeArray().forEach(function(a){
             //payload[a['name']] = a['value']     
             if(payload[a['name']] == undefined){
             payload[a['name']]=a['value']
@@ -15,11 +31,15 @@
                 payload[a['name']]=payload[a['name']].concat(a['value'])        
             }
         })
-        console.log(payload['tm_first_name'])
+        console.log(payload['noEvents'])
         return JSON.stringify(payload)
     }
     $(document).on('click',"#regSubmit",function(){
-        let payload = serialize('#signup-form')
+        //let payload = serialize('#signup-form')
+        let payload = {}
+        $("#signup-form").serializeArray().forEach(function(a){
+            payload[a['name']]=a['value']
+        })
         console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psifi Login</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+        .flexbox{
+            display: flex;
+            justify-content: space-around;
+        }
+        .imgcontainer {
+          position: relative;
+          width: 300px;
+        }
+        .image {
+          opacity: 1;
+          display: block;
+          
+          height: auto;
+          transition: .5s ease;
+          backface-visibility: hidden;
+        }
+
+        .middle {
+          transition: .5s ease;
+          opacity: 0;
+          position: absolute;
+          top: 32%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          text-align: center;
+        }
+
+        .imgcontainer:hover .image {
+          opacity: 0.3;
+        }
+
+        .imgcontainer:hover .middle {
+          opacity: 1;
+        }
+
+        .text {
+          background-color: #4CAF50;
+          color: white;
+          font-size: 16px;
+          padding: 16px 32px;
+        }
+        .lowerbutton{
+            text-align: center;
+            margin: 10px 0px 100px 0px;
+        }
+        .text:hover {
+          background-color: #a2baa3;
+          
+        }
+        #add-participants {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        #add-participants:hover {
+            background-color: #555;
+        }
+        
+        .collapsible>div:first-child {
+            flex-grow: 3;
+        }
+        
+        .collapsible>div {
+            padding: 18px;
+        }
+        
+        .collapsible>div:hover {
+            background-color: #555;
+        }
+        
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            width: 95%;
+            border: none;
+            text-align: left;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+        }
+        
+        .active {
+            background-color: #555;
+        }
+        
+        .form-row>.content {
+            padding: 10px 18px 0px 18px;
+            max-height: 0;
+            float: left;
+            width: 95%;
+            display: block;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .form-option-group select {
+            -webkit-appearance: menulist !important;
+            ;
+        }
+        
+        .text-input {
+            margin-bottom: 15px;
+        }
+        .container{
+            width: 800px;
+        }
+        h2{
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        .form-group{
+            padding: 10px 40px 10px 40px;
+        }
+        .center{
+            padding-left: 30%;
+        }
+        .cbtn{
+            width:140px;
+            height: 50px;
+            color: #ffff;
+            background: #4966b1;
+            -webkit-align-items:center;
+            -moz-align-items:center;
+            align-items:center;
+            -o-align-items:center;
+            -ms-align-items:center;
+            justify-content:center;
+            -moz-justify-content:center;
+            -webkit-justify-content:center;
+            -o-justify-content:center;
+            -ms-justify-content:center;
+            text-decoration:center;
+            cursor:pointer;
+            display:flex;
+            display:-webkit-flex;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="container">
+                <h2>Choose Region</h2>
+                <div class="flexbox">
+                
+                    <div class="imgcontainer">
+                      <img src="images\pak.svg" alt="Avatar" class="image" style="width:100%">
+                      <div class="middle">
+                        <div class="text">Pakistan</div>
+                      </div>
+                      <div class="text lowerbutton">Pakistan</div>
+                    </div>
+                
+                
+                    <div class="imgcontainer">
+                      <img src="images\int.jpg" alt="Avatar" class="image" style="width:88.5%">
+                      <div class="middle">
+                        <div class="text">International</div>
+                      </div>
+                      <div class="text lowerbutton">International</div>
+                    </div>
+                
+                </div>
+
+        </div>
+
+        <!-- JS -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+        <script src="vendor/minimalist-picker/dobpicker.js"></script>
+        <script src="vendor/nouislider/nouislider.min.js"></script>
+        <script src="vendor/wnumb/wNumb.js"></script>
+        <script src="js/country.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            $(document).on('click','.text',function(){
+                window.location.href="portal.html"
+            })
+        </script>
+
+</body>
+
+</html>
