@@ -269,19 +269,14 @@
             let payload  = serialize('#portal-form')
             console.log(payload)
             $.ajax({
-                url:"http://spades.lums.edu.pk/portal/submit",
+                url:"http://spades.lums.edu.pk/portal/submit?token="+sessionStorage['token'],
                 type: "POST",
                 data: payload,
                 contentType: "application/json",
                 dataType: 'json',
-                beforeSend: function (xhr) {   //Include the bearer token in header
-                    xhr.setRequestHeader("Authorization", 'Bearer '+ sessionStorage['token']);
-                },
                 success:function(data, textStatus, jqXHR) {
                     console.log(data)
                     if(data['status']==200){
-                        window.location.href="portal.html";
-
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
