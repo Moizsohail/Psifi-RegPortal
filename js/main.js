@@ -109,6 +109,7 @@
                       },
                       error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
                     });
+                    window.location.href="portal.html"
 
                 }
             },
