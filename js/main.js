@@ -105,11 +105,11 @@
                             xhr.setRequestHeader("authorization", 'Bearer '+ sessionStorage['token']);
                         },
                       success:function(data, textStatus, jqXHR) {
-                        console.log(data);
+                        window.location.href="portal.html"
                       },
                       error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
                     });
-                    window.location.href="portal.html"
+                    
 
                 }
             },
