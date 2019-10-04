@@ -6,20 +6,19 @@
         $(this).next().html($(this).val().length+1+'/150 words')
     })
     $(document).on('change','#noEvents',function(x){
-            console.log(5)
-            switch($(this).val()){
-                case "2":
-                    $("#eventPref3").parent().hide()
-                    $("#eventPref3").parent().prev().hide()
-                    $("#eventPref3").toggleClass('removed',true)
-                    break;
-                case "3":
-                    $("#eventPref3").parent().show()
-                    $("#eventPref3").parent().prev().show()
-                    $("#eventPref3").toggleClass('removed',false)
-                    break;
-            }
-        })
+        switch($(this).val()){
+            case "2":
+                $("#engrPref").parent().hide()
+                $("#engrPref").parent().prev().hide()
+                $("#engrPref").toggleClass('removed',true)
+                break;
+            case "3":
+                $("#engrPref").parent().show()
+                $("#engrPref").parent().prev().show()
+                $("#engrPref").toggleClass('removed',false)
+                break;
+        }
+    })
     function serialize(form){
         let payload  = {};
         

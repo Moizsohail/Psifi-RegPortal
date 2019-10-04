@@ -151,7 +151,7 @@
                                     
                                 </select>
                                 </div>
-                                <span class="text-input">Country</span>
+                                <label for="mysterPref" name="mysterPref" class="text-input">Country *</label>
                             </div>
 
                     </fieldset>
@@ -242,7 +242,7 @@
                                                 <input type="number" name="partCnic" />
                                             </div>
                                             <div class="form-row">
-                                                <label class="form-label">Gaurdian Name</label>
+                                                <label class="form-label">Guardian Name</label>
                                                 <div class="form-flex">
                                                     <div class="form-group">
                                                         <input type="text" name="g_first_name"  />
@@ -255,8 +255,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="cnic" class="form-label">Gaurdian Number </label>
-                                                <input type="number" name="gaurdianNumber" />
+                                                <label for="cnic" class="form-label">Guardian Number </label>
+                                                <input type="number" name="guardianNumber" />
                                             </div>
                                         </div>
                                     </div>
@@ -273,7 +273,7 @@
                         <div class="form-group">
                             <label for="noEvents"  class="form-label">Number of Events you wish to participate in:</label>
                             <div class="form-option-group">
-                                <select id="noEvents" name="noEvents">
+                                <select id="noEvents" name="noEvents" required>
                                     <option ></option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -315,9 +315,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="prefExplanation" class="form-label">Did any campus ambassador refer you to PsiFi?</label>
-                            <input type="radio" name="referredByCA" value="yes">Yes
-                            <input type="radio" name="referredByCA" value="no"> No<br>
+                            <label for="prefExplanation" class="form-label">Did any Campus Ambassador refer you to PsiFi?</label>
+                            <div class="form-option-group">
+                            Yes<input type="radio" name="referredByCA" value="yes">
+                            No<input type="radio" name="referredByCA" value="no">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="prefExplanation" class="form-label">Explain your choice of events:</label>
