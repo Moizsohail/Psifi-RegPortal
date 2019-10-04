@@ -85,16 +85,6 @@
         let payload  = {};
         $('#login-form').serializeArray().forEach(function(a){
             payload[a['name']] = a['value']     
-            // (typeof a['name'])
-            // if((typeof payload[a['name']]) ==undefined)
-            //     payload[a['name']]=a['value']
-            // else{
-            //     if(typeof a['name']!='Object'){
-            //         payload[a['name']]=[payload[a['name']]]
-            //     }
-            //     payload[a['name']]=payload[a['name']].concat(a['value'])
-                
-            // }
         })
         console.log(payload)
         payload = JSON.stringify(payload)
@@ -108,10 +98,11 @@
                 console.log(data)
                 if(data['status']==200){
                     sessionStorage['token'] = data['token'];
+                    console.log('a');
                     $.ajax({
                       url: "http://spades.lums.edu.pk/portal/portal.html",
                       type: 'GET',
-                      
+
                     });
 
                 }
