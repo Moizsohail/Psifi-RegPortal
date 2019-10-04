@@ -98,11 +98,16 @@
                 console.log(data)
                 if(data['status']==200){
                     sessionStorage['token'] = data['token'];
-                    console.log('a');
                     $.ajax({
                       url: "http://spades.lums.edu.pk/portal/portal.html",
                       type: 'GET',
-
+                      beforeSend: function (xhr) {   //Include the bearer token in header
+                            xhr.setRequestHeader("authorization", 'Bearer '+ sessionStorage['token']);
+                        },
+                      success:function(data, textStatus, jqXHR) {
+                        console.log(data);
+                      }
+                      error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
                     });
 
                 }
