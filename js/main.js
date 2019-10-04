@@ -111,9 +111,6 @@
                     $.ajax({
                       url: "http://spades.lums.edu.pk/portal/portal.html",
                       type: 'GET',
-                      beforeSend: function (xhr) {   //Include the bearer token in header
-                            xhr.setRequestHeader("authorization", 'Bearer '+ sessionStorage['token']);
-                        },
                       
                     });
 
