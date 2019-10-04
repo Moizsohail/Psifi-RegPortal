@@ -98,7 +98,7 @@
                 console.log(data)
                 if(data['status']==200){
                     sessionStorage['token'] = data['token'];
-                    window.location.href="portal.html?<token></token>="+ sessionStorage['token'];
+                    window.location.href="portal.html?token="+ sessionStorage['token'];
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
