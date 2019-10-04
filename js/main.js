@@ -268,6 +268,7 @@
         onFinished: function(event, currentIndex) {
             let payload  = serialize('#portal-form')
             console.log(payload)
+            console.log("http://spades.lums.edu.pk/portal/submit?token="+sessionStorage['token'])
             $.ajax({
                 url:"http://spades.lums.edu.pk/portal/submit?token="+sessionStorage['token'],
                 type: "POST",
