@@ -21,19 +21,30 @@
     })
     function serialize(form){
         let payload  = {};
-        
+        payload['inst'] = {};
+        payload['member'] = [];
+        payload['event'] = {};
+        let i = 0;
         $('form input,form select').not(`#temp-part-content input,
             #temp-part-content select, .removed`).serializeArray().forEach(function(a){
-            //payload[a['name']] = a['value']     
-            if(payload[a['name']] == undefined){
-            payload[a['name']]=a['value']
+            let sec_name = a['name'].split('-')[0]
+            let data_name = a['name'].split('-')[1]
+            if(payload[sec_name].constructor != Array){
+                payload[sec_name][data_name]=a['value']
             }
             else{
-                
-                if(typeof payload[a['name']]!='object')
-                    payload[a['name']]=[].concat(payload[a['name']])
-                
-                payload[a['name']]=payload[a['name']].concat(a['value'])        
+                if(payload[sec_name][i] == undefined){
+                    payload[sec_name][i] = {}
+                }
+                if(payload[sec_name][i][data_name] != undefined){
+                    i++;
+                }
+
+                if(payload[sec_name][i] == undefined){
+                    payload[sec_name][i] = {}
+                }
+                payload[sec_name][i][data_name] = a['value'];
+                // payload[a['name']]=payload[a['name']].concat(a['value'])        
             }
         })
         console.log(payload['noEvents'])
@@ -223,7 +234,7 @@
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
-        
+        startIndex:2,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
@@ -260,7 +271,7 @@
             let payload  = serialize('#portal-form')
             console.log(payload)
             $.ajax({
-                url:"http://spades.lums.edu.pk/api/login/submit",
+                url:"http://spades.lums.edu.pk/api/portal/submit",
                 type: "POST",
                 data: payload,
                 contentType: "application/json",
