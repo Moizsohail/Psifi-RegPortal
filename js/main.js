@@ -48,7 +48,7 @@
         console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({
-            url:"http://134.209.151.194:3000/api/register/submit",
+            url:"http://spades.lums.edu.pk/api/register/submit",
             type: "POST",
             data: payload,
             contentType: "application/json",
@@ -80,7 +80,7 @@
         console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({
-            url:"http://134.209.151.194:3000/api/login/submit",
+            url:"http://spades.lums.edu.pk/api/login/submit",
             type: "POST",
             data: payload,
             contentType: "application/json",
@@ -218,7 +218,7 @@
             let payload  = serialize('#portal-form')
             console.log(payload)
             $.ajax({
-                url:"http://134.209.151.194:3000/api/login/submit",
+                url:"http://spades.lums.edu.pk/api/login/submit",
                 type: "POST",
                 data: payload,
                 contentType: "application/json",
