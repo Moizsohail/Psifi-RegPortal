@@ -19,6 +19,14 @@
         //         break;
         // }
     })
+    function parseString(x){
+        return x;
+        if (Number(x).isNaN()){
+            if(x != '')
+                return Number(x);
+        }
+        return x;
+    }
     function serialize(form){
         let payload  = {};
         payload['inst'] = {};
@@ -27,10 +35,11 @@
         let i = 0;
         $('form input,form select').not(`#temp-part-content input,
             #temp-part-content select, .removed`).serializeArray().forEach(function(a){
+            let value = parseString(a['value'])
             let sec_name = a['name'].split('-')[0]
             let data_name = a['name'].split('-')[1]
             if(payload[sec_name].constructor != Array){
-                payload[sec_name][data_name]=a['value']
+                payload[sec_name][data_name]=value
             }
             else{
                 if(payload[sec_name][i] == undefined){
@@ -43,11 +52,10 @@
                 if(payload[sec_name][i] == undefined){
                     payload[sec_name][i] = {}
                 }
-                payload[sec_name][i][data_name] = a['value'];
+                payload[sec_name][i][data_name] = value;
                 // payload[a['name']]=payload[a['name']].concat(a['value'])        
             }
         })
-        console.log(payload['noEvents'])
         return JSON.stringify(payload)
     }
     $(document).on('click',"#regSubmit",function(){
@@ -222,9 +230,10 @@
             email: {
                 email: true,
             },
-            institPhone: {
+            instit-phone: {
                 number:true,
             }
+
         },
         onfocusout: function(element) {
             $(element).valid();
@@ -271,7 +280,7 @@
             let payload  = serialize('#portal-form')
             console.log(payload)
             $.ajax({
-                url:"http://spades.lums.edu.pk/api/portal/submit",
+                url:"http://spades.lums.edu.pk/portal/submit",
                 type: "POST",
                 data: payload,
                 contentType: "application/json",
