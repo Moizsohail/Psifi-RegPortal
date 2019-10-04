@@ -94,7 +94,9 @@ input[type=radio] {
 
 h2 {
   font-size: 30px;
-  margin: 0px; }
+  margin: 0px; 
+  color: darkblue
+}
 
 body {
   font-size: 14px;
