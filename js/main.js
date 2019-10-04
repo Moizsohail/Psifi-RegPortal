@@ -108,12 +108,11 @@
                 console.log(data)
                 if(data['status']==200){
                     sessionStorage['token'] = data['token'];
-                    //console.log(sessionStorage['token']);
                     $.ajax({
                       url: "http://spades.lums.edu.pk/portal/portal.html",
                       type: 'GET',
                       beforeSend: function (xhr) {   //Include the bearer token in header
-                            xhr.setRequestHeader("authentication", 'Bearer '+ sessionStorage['token']);
+                            xhr.setRequestHeader("authorization", 'Bearer '+ sessionStorage['token']);
                         },
                       
                     });
