@@ -230,9 +230,9 @@
             email: {
                 email: true,
             },
-            instit-phone: {
-                number:true,
-            }
+            // 'instit-phone': {
+            //     number:true,
+            // }
 
         },
         onfocusout: function(element) {
@@ -285,10 +285,12 @@
                 data: payload,
                 contentType: "application/json",
                 dataType: 'json',
+                beforeSend: function (xhr) {   //Include the bearer token in header
+                    xhr.setRequestHeader("Authorization", 'Bearer '+ sessionStorage['token']);
+                },
                 success:function(data, textStatus, jqXHR) {
                     console.log(data)
                     if(data['status']==200){
-                        sessionStorage['token'] = data['token'];
                         window.location.href="portal.html";
 
                     }
