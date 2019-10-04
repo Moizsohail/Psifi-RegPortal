@@ -6,18 +6,18 @@
         $(this).next().html($(this).val().length+1+'/150 words')
     })
     $(document).on('change','#noEvents',function(x){
-        switch($(this).val()){
-            case "2":
-                $("#engrPref").parent().hide()
-                $("#engrPref").parent().prev().hide()
-                $("#engrPref").toggleClass('removed',true)
-                break;
-            case "3":
-                $("#engrPref").parent().show()
-                $("#engrPref").parent().prev().show()
-                $("#engrPref").toggleClass('removed',false)
-                break;
-        }
+        // switch($(this).val()){
+        //     case "2":
+        //         $("#engrPref").parent().hide()
+        //         $("#engrPref").parent().prev().hide()
+        //         $("#engrPref").toggleClass('removed',true)
+        //         break;
+        //     case "3":
+        //         $("#engrPref").parent().show()
+        //         $("#engrPref").parent().prev().show()
+        //         $("#engrPref").toggleClass('removed',false)
+        //         break;
+        // }
     })
     function serialize(form){
         let payload  = {};
@@ -96,14 +96,56 @@
             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
         })
     })  
-    
+    function togglePrivate(name,show,select){
+        if(show && select){
+            $("[name="+name+"] option:first-child").html('')
+            $("[name="+name+"]").parent().show()
+            $("[name="+name+"]").parent().prev().show()
+        
+        }
+        else if(!show && select){
+            $("[name="+name+"] option:first-child").html('empty')
+            $("[name="+name+"]").val(false)
+            $("[name="+name+"]").parent().prev().hide()
+            $("[name="+name+"]").parent().hide()
+        
+        }
+        
+        else if(show){
+            $("[name="+name+"]").val('')
+            $("[name="+name+"]").parent().show()
+            $("[name="+name+"]").parent().prev().show()
+        }
+        else{
+            $("[name="+name+"]").val('empty')
+            $("[name="+name+"]").parent().prev().hide()
+            $("[name="+name+"]").parent().hide()
+        }
+
+    }
     appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="S" || $(this).val()=="U"){
-
+            togglePrivate("inst-faculty",true,true)
+            togglePrivate("inst-name",true,false)
+            togglePrivate("inst-email",true,false)
+            togglePrivate("inst-phone",true,false)
+            togglePrivate("inst-principalEmail",true,false)
+            togglePrivate("inst-address",true,false)
+            togglePrivate("inst-city",true,false)
+            togglePrivate("inst-country",true,true)
+         
         }
         else if($(this).val()=="P"){
-
+            togglePrivate("inst-faculty",false,true)   
+            togglePrivate("inst-name",false,false)
+            togglePrivate("inst-email",false,false)
+            togglePrivate("inst-phone",false,false)
+            togglePrivate("inst-principalEmail",false,false)
+            togglePrivate("inst-address",false,false)
+            togglePrivate("inst-city",false,false)
+            togglePrivate("inst-country",false,true)
+            
         }
     })
     
