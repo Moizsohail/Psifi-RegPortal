@@ -134,7 +134,7 @@
     appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="S" || $(this).val()=="U"){
-            togglePrivate("inst-faculty",true,true)
+            togglePrivate("inst-advisor",true,true)
             togglePrivate("inst-name",true,false)
             togglePrivate("inst-email",true,false)
             togglePrivate("inst-phone",true,false)
@@ -145,7 +145,7 @@
          
         }
         else if($(this).val()=="P"){
-            togglePrivate("inst-faculty",false,true)   
+            togglePrivate("inst-advisor",false,true)   
             togglePrivate("inst-name",false,false)
             togglePrivate("inst-email",false,false)
             togglePrivate("inst-phone",false,false)
