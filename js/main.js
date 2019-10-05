@@ -100,6 +100,9 @@
                     sessionStorage['token'] = data['token'];
                     window.location.href="portal.html?token="+ sessionStorage['token'];
                 }
+                else{
+                    alert("Invalid ID or Password entered.")
+                }
             },
             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
         })
