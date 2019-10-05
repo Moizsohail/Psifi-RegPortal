@@ -1,7 +1,7 @@
 function appendCountryOptions(element){
 	$(element).each(function(){
 		$(this).append(`<option></option>
-                        <option value="AF">Afghanistan</option>
+                        <option value="AF" selected>Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
                         <option value="DZ">Algeria</option>
