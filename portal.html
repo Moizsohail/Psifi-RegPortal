@@ -91,10 +91,9 @@
                 <div id="tabs">
                     <h3>Team Information</h3>
                     <fieldset>
-                        <img src="images/psifilogo.png" alt="PsiFi XI" align="right">
                         <h2>Team Information</h2>
-                        <p class="desc">Please enter your infomation and proceed to next step so we can build your account
-                        </p>
+                        <img src="images/psifilogo.png" alt="PsiFi XI">
+                        <p class="desc">Please enter your team infomation and proceed to next step so we can build your account.</p>
                         <div class="fieldset-content">
                             <div class="form-group">
                                 <label for="applyingThrough"  class="form-label">Are you applying through </label>
@@ -253,11 +252,11 @@
 
                     <h3>Events Information</h3>
                     <fieldset>
-                        <img src="images/psifilogo.png" alt="PsiFi XI" align="right">
                         <h2>Events Information</h2>
+                        <img src="images/psifilogo.png" alt="PsiFi XI">
                         <p class="desc">Note that the events you get are subject to your scores in the evaluation form, number of people applying for that event, as well as the timing of your payment (which confirms your participation in PsiFi). However, we will try our best to allot you to events according to your preferences and the allottment done by our team cannot be contested.</p>
                         <div class="form-group">
-                            <label for="noEvents"  class="form-label">Number of Events you wish to participate in:</label>
+                            <label class="form-label">Number of Events you wish to participate in:</label>
                             <div class="form-option-group">
                                 <select id="noEvents" name="event-number">
                                     <option ></option>
@@ -267,9 +266,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="logicalPref"  class="form-label">Event Preference (Logical) *</label>
+                            <label class="form-label">Event Preference (Logical) *</label>
                             <div class="form-option-group">
-                                <select  id="logicalPref" name="event-logical">
+                                <select  id="logicalPref" name="event-logical" required>
                                     <option ></option>
                                     <option value="TechWars">Tech Wars</option>
                                     <option value="ScifinityWars">Scifinity Wars</option>
@@ -279,9 +278,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="mysterPref"  class="form-label">Event Preference (Mystery) *</label>
+                            <label class="form-label">Event Preference (Mystery) *</label>
                             <div class="form-option-group">
-                                <select  id="mysterPref" name="event-mystery">
+                                <select  id="mysterPref" name="event-mystery" required
                                     <option ></option>
                                     <option value="SCB">Science Crime Busters</option>
                                     <option value="Galactica">Galactica</option>
@@ -290,9 +289,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="engrPref"  class="form-label">Event Preference (Engineering) *</label>
+                            <label class="form-label">Event Preference (Engineering) *</label>
                             <div class="form-option-group">
-                                <select  id="engrPref" name="event-engineering">
+                                <select  id="engrPref" name="event-engineering" required>
                                     <option ></option>
                                     <option value="Seige">Seige</option>
                                     <option value="GearUp">Gear Up</option>
@@ -301,9 +300,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="prefExplanation" class="form-label">Did any Campus Ambassador refer you to PsiFi?</label>
+                            <label class="form-label">Did any Campus Ambassador refer you to PsiFi?</label>
                             <div class="form-option-group">
-                                <select  id="engrPref" name="event-engineering">
+                                <select id="CArefer" name="event-CArefer">
                                     <option ></option>
                                     <option value=1>Yes</option>
                                     <option value=0>No</option>
@@ -311,12 +310,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="prefExplanation" class="form-label">Explain your choice of events:</label>
+                            <label class="form-label">Explain your choice of events:</label>
                             <input type="text"  class="wordCount" name="event-explain" />
                             <span class="text-input">Not more than 150 words.</span>
                         </div>
                         <div class="form-group">
-                            <label for="campusAmbass" class="form-label">Name of the Campus Ambassador:</label>
+                            <label class="form-label">Name of the Campus Ambassador:</label>
                             <input type="text"  name="event-ambassadorName" />
                         </div>
                         <div class="form-group">

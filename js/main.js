@@ -6,18 +6,18 @@
         $(this).next().html($(this).val().length+1+'/150 words')
     })
     $(document).on('change','#noEvents',function(x){
-        // switch($(this).val()){
-        //     case "2":
-        //         $("#engrPref").parent().hide()
-        //         $("#engrPref").parent().prev().hide()
-        //         $("#engrPref").toggleClass('removed',true)
-        //         break;
-        //     case "3":
-        //         $("#engrPref").parent().show()
-        //         $("#engrPref").parent().prev().show()
-        //         $("#engrPref").toggleClass('removed',false)
-        //         break;
-        // }
+        switch($(this).val()){
+            case "2":
+                $("#logicalPref").prop('required',false);
+                $("#mysterPref").prop('required',false);
+                $("#engrPref").prop('required',false);
+            break;
+            case "3":
+                $("#logicalPref").prop('required',true);
+                $("#mysterPref").prop('required',true);
+                $("#engrPref").prop('required',true);
+            break;
+        }
     })
     function parseString(x){
         return x;
@@ -262,6 +262,20 @@
             return form.valid();
         },
         onFinishing: function(event, currentIndex) {
+            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref")]
+            if ($("#noEvents").val() == "2"){
+                var noSelected = 0
+                for (i = 0; i < prefs.length; i++) {
+                    if (prefs[i].val() != ""){ //some value is selected
+                        noSelected++
+                    }
+                }
+                if (noSelected != 2){
+                    alert("Please select 2 events.")
+                    $("#noEvents").focus()
+                    return false;
+                }
+            }
             form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
