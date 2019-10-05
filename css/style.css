@@ -500,7 +500,7 @@ select.error {
 
 @media screen and (max-width: 1024px) {
   .container {
-    width: calc(100% - 40px);
+    width: calc(100%);
     max-width: 100%; }
 
   .vertical .steps, .vertical .content, .vertical .actions {
@@ -515,7 +515,7 @@ select.error {
     height: 120px; } }
 @media screen and (max-width: 992px) {
   .content {
-    height: 900px; }
+    height: auto; }
 
   .form-radio-flex input + label {
     width: 100px;
@@ -550,7 +550,7 @@ select.error {
     -ms-flex-direction: column; }
 
   .content {
-    height: 1050px; }
+    height: auto; }
 
   #find_bank {
     margin-bottom: 20px; }
