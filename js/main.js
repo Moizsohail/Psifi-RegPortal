@@ -1,9 +1,24 @@
  (function($) {
+    // $(document).on("paste drop", '.wordCount', function (e) {
+    //   if(e.type=="drop"){
+    //     e.preventDefault()
+    //   }
+    //   else{
+    //     console.log(150-$(this).val().length)
+    //     if($(this).val().length > 150){
+    //         e.preventDefault()
+    //     }
+    //     else
+    //         $(this).val($(this).val()+e.originalEvent.clipboardData.getData('text').substring(0,150-$(this).val().length));
+    //   }
+    //   $(this).next().html($(this).val().length+'/150 words')
+    // });
+
     $(document).on('keypress','.wordCount',function(e){
-        if($(this).val().length +2 > 150){
+        if($(this).val().length + 1> 150){
             e.preventDefault()
         }
-        $(this).next().html($(this).val().length+1+'/150 words')
+        $(this).next().html($(this).val().length+'/150 words')
     })
     $(document).on('change','#noEvents',function(x){
         switch($(this).val()){
@@ -464,7 +479,7 @@
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
-        startIndex:2,
+        startIndex:0,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
