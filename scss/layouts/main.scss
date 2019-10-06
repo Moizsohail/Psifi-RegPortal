@@ -137,7 +137,7 @@ input {
             content: '';
             width: 2px;
             height: 180px;
-            background: #ebebeb;
+            background: black;
             left: 64px;
             top: 50%;
             @include transform(translateY(-50%));

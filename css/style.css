@@ -54,7 +54,9 @@ textarea {
   -moz-appearance: unset !important;
   -webkit-appearance: unset !important;
   -o-appearance: unset !important;
-  -ms-appearance: unset !important; }
+  -ms-appearance: unset !important;
+  resize: none;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -95,7 +97,7 @@ input[type=radio] {
 h2 {
   font-size: 30px;
   margin: 0px; 
-  color: darkblue
+  color: #02376b;
 }
 
 body {
@@ -103,7 +105,7 @@ body {
   line-height: 1.6;
   color: #222;
   font-weight: 400;
-  font-family: 'Roboto Slab';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0px;
   background: #222;
   position: relative;
@@ -136,7 +138,9 @@ p.desc {
   display: block;
   width: 100%;
   font-size: 16px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  color: black
+ }
 
 .text-input {
   font-size: 12px;
@@ -195,12 +199,12 @@ input {
     cursor: pointer;
     padding: 0 20px;
     height: 50px;
-    font-size: 14px;
-    font-family: 'Roboto Slab';
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #999;
     box-sizing: border-box;
     background-color: #fff;
-    color: #222;
+    color: #003366;
     font-weight: bold; }
 
 .form-date-item {
@@ -221,8 +225,8 @@ input {
     float: right;
     width: 1090px; }
 
-.content {
-   }
+/* .content {
+   } */
 
 .steps ul {
   flex-direction: column;
@@ -298,7 +302,8 @@ input {
   display: none; }
 
 .content, .actions {
-  background: #f8f8f8; }
+  background: #f6f8ff; }
+
 
 .actions {
   padding-bottom: 90px; }
