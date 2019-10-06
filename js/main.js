@@ -292,7 +292,7 @@
             alert("Can't have more than 5 participants");
             return false;
         }
-        number_of_tabs++;
+        number_of_tabs++; //added a new member/tab
         var participant_header = $('#temp-part-header').clone();
         var participant_content = $('#temp-part-content').clone();
         participant_header.toggleClass('active',false);
@@ -301,6 +301,7 @@
         participant_header.attr('id','');
         participant_content.css('display','block');
         participant_content.attr('id','');
+        $("#headDeleg").append('<option value="' +  number_of_tabs +'">Team Member '+ number_of_tabs +'</option>');
         
         
         $('#part-group').append(participant_header);
@@ -320,6 +321,9 @@
             $(this).parent().next().next().attr('id','temp-part-header')
             $(this).parent().next().next().next().attr('id','temp-part-content')
         }
+
+        console.log(number_of_tabs);
+        $("#headDeleg").find('[value="' + number_of_tabs + '"]').remove();
         number_of_tabs--;
 
         $(this).parent().next().remove()
@@ -372,6 +376,12 @@
             },
             'inst-advisor':{ 
                 required: true
+            },
+            'member-headDeleg':{
+                required: true,
+                number: true,
+                min: 1,
+                max: 5
             },
             'member-firstName':{
                 required: true,
