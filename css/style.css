@@ -56,6 +56,8 @@ textarea {
   -o-appearance: unset !important;
   -ms-appearance: unset !important;
   resize: none;
+  width:  100%;
+  border:  1px solid #ebebeb;
 }
 
 input::-webkit-outer-spin-button,
