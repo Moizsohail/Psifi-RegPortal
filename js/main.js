@@ -21,11 +21,11 @@
     })
     function parseString(x){
         return x;
-        if (Number(x).isNaN()){
-            if(x != '')
-                return Number(x);
-        }
-        return x;
+        // if (Number(x).isNaN()){
+        //     if(x != '')
+        //         return Number(x);
+        // }
+        // return x;
     }
     function serialize(form){
         let payload  = {};
@@ -58,10 +58,39 @@
         })
         return JSON.stringify(payload)
     }
+    var rform = $('#signup-form');
+    rform.validate({
+        errorPlacement: function errorPlacement(error, element) {
+            element.before(error);
+        },
+        rules: {
+            'email':{
+                required: true,
+                email: true
+            },
+            'name':{
+                required: true,
+                minlength: 3,
+                maxlength: 50
+            },
+            'password':{
+                required: true,
+                minlength: 8,
+                maxlength: 128
+            },
+        },
+        onfocusout: function(element) {
+            $(element).valid();
+        },
+    });
     $(document).on('click',"#regSubmit",function(){
         //let payload = serialize('#signup-form')
         let payload = {}
-        $("#signup-form").serializeArray().forEach(function(a){
+        rform.validate();
+        if (!rform.valid()){
+            return false;
+        }
+        rform.serializeArray().forEach(function(a){
             payload[a['name']]=a['value']
         })
         console.log(payload)
@@ -77,13 +106,40 @@
                 if(data['status']==200){
                     window.location.href='success.html'
                 }
+                else {
+                    alert(data['message'])
+                }
             },
-            error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+            error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
         })
     })
+    var lform = $('#login-form');
+    lform.validate({
+        errorPlacement: function errorPlacement(error, element) {
+            element.before(error);
+        },
+        rules: {
+            'email':{
+                required: true,
+                email: true
+            },
+            'password':{
+                required: true,
+                minlength: 8,
+                maxlength: 128
+            },
+        },
+        onfocusout: function(element) {
+            $(element).valid();
+        },
+    });
     $(document).on('click',"#loginSubmit",function(){
-        let payload  = {};
-        $('#login-form').serializeArray().forEach(function(a){
+        let payload  = {}; 
+        lform.validate();
+        if (!lform.valid()){
+            return false;
+        }
+        lform.serializeArray().forEach(function(a){
             payload[a['name']] = a['value']     
         })
         console.log(payload)
@@ -101,10 +157,10 @@
                     window.location.href="portal.html?token="+ sessionStorage['token'];
                 }
                 else{
-                    alert("Invalid ID or Password entered.")
+                    alert(data['message'])
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+            error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
         })
     })  
     function togglePrivate(name,show,select){
@@ -145,7 +201,6 @@
             togglePrivate("inst-address",true,false)
             togglePrivate("inst-city",true,false)
             togglePrivate("inst-country",true,true)
-         
         }
         else if($(this).val()=="P"){
             togglePrivate("inst-faculty",false,true)   
@@ -156,7 +211,54 @@
             togglePrivate("inst-address",false,false)
             togglePrivate("inst-city",false,false)
             togglePrivate("inst-country",false,true)
-            
+        }
+
+        if ($(this).val()=="U"){ //must also limit events for UNI
+            $("#logicalPref").empty();
+            $("#mysterPref").empty();
+            $("#engrPref").empty();
+
+            $('#logicalPref').append('<option></option>');
+            $('#logicalPref').append('<option value="TechWars">Tech Wars</option>');
+
+            $('#mysterPref').append('<option></option>');
+            $('#mysterPref').append('<option value="Galactica">Galactica</option>');
+
+            $('#engrPref').append('<option></option>');
+            $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
+            $('#engrPref').append('<option value="DrogoneWars">Drogone Wars</option>');
+        }
+        else{
+            $("#logicalPref").empty();
+            $("#mysterPref").empty();
+            $("#engrPref").empty();
+
+            $('#logicalPref').append('<option></option>');
+            $('#logicalPref').append('<option value="TechWars">Tech Wars</option>');
+            $('#logicalPref').append('<option value="ScifinityWars">Scifinity Wars</option>');
+            $('#logicalPref').append('<option value="MathGauge">Math Gauge</option>');
+            $('#logicalPref').append('<option value="TDM">Tour De Mind</option>');
+
+            $('#mysterPref').append('<option></option>');
+            $('#mysterPref').append('<option value="Galactica">Galactica</option>');
+            $('#mysterPref').append('<option value="SCB">Science Crime Busters</option>');
+            $('#mysterPref').append('<option value="DD">Diagnosis Dilemma</option>');
+
+            $('#engrPref').append('<option></option>');
+            $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
+            $('#engrPref').append('<option value="DrogoneWars">Drogone Wars</option>');
+            $('#engrPref').append('<option value="GearUp">Gear Up</option>');
+            $('#engrPref').append('<option value="Seige">Seige</option>');
+        }
+    })
+    $(document).on("click","#event-CArefer",function(){
+        if($(this).val()==1){
+            togglePrivate("event-ambassadorName",true,true)
+            togglePrivate("event-ambassadorPhone",true,true)
+        }
+        else{
+            $("[name=event-ambassadorName]").parent().hide()
+            $("[name=event-ambassadorPhone]").parent().hide()
         }
     })
     
@@ -219,13 +321,140 @@
             element.before(error);
         },
         rules: {
-            email: {
+            'inst-type':{ //length restricted to options
+                required: true,
+            },
+            'inst-name':{
+                required: true,
+                minlength: 3,
+                maxlength:50
+            },
+            'inst-city':{
+                required: true,
+                minlength: 3,
+                maxlength:50
+            },
+            'inst-email': {
+                required: true,
                 email: true,
             },
-            // 'instit-phone': {
-            //     number:true,
-            // }
-
+            'inst-phone': {
+               number:true,
+               minlength: 11,
+               maxlength: 13
+            },
+            'inst-principalEmail': {
+                required: true,
+                email: true
+            },
+            'inst-address':{
+                required:true,
+                minlength:10,
+                maxlength:150,
+            },
+            'inst-country':{ //length restricted by options
+                required:true,
+            },
+            'inst-advisor':{ 
+                required: true
+            },
+            'member-firstName':{
+                required: true,
+                minlength: 3,
+                maxlength:50
+            },
+            'member-lastName':{
+                required: true,
+                minlength: 3,
+                maxlength:50
+            },
+            'member-birthDate':{
+                required: true,
+                date: true
+            },
+            'member-email':{
+                required: true,
+                email: true
+            },
+            'member-phone':{
+                required: true,
+                number: true,
+                minlength: 11,
+                maxlength: 13
+            },
+            'member-gender':{
+                required: true
+            },
+            'member-accomodation':{
+                required: true
+            },
+            'member-address':{
+                required: true,
+                minlength: 10,
+                maxlength: 150
+            },
+            'member-city':{ //length restricted by options
+                required: true
+            },
+            'member-country':{ //length restricted by options
+                required: true
+            },
+            'member-cnic':{
+                required: true,
+                minlength: 13,
+                maxlength: 15
+            },
+            'member-firstNameGaurdian':{
+                required: true,
+                minlength: 3,
+                maxlength:50
+            },
+            'member-lastNameGaurdian':{
+                required: true,
+                minlength: 3,
+                maxlength:50
+            },
+            'member-phoneGaurdian':{
+                required: true,
+                number: true,
+                minlength: 11,
+                maxlength: 13
+            },
+            'event-number':{
+                required: true,
+                number: true
+            },
+            'event-logical':{  //length restricted by options
+            },
+            'event-mystery':{  //length restricted by options
+            },
+            'event-engineering':{  //length restricted by options
+            },
+            'event-explain':{
+                maxlength: 150
+            },
+            'event-CArefer':{
+                required: true
+            },
+            'event-ambassadorName':{
+                required:{
+                    depends: function(element){
+                        return $("#event-CArefer").val() == 1;
+                    }
+                },
+                minlength: 3,
+                maxlength: 50
+            },
+            'event-ambassadorPhone':{
+                required:{
+                    depends: function(element){
+                        return $("#event-CArefer").val() == 1;
+                    }
+                },
+                number: true,
+                minlength: 11,
+                maxlength: 13
+            },
         },
         onfocusout: function(element) {
             $(element).valid();

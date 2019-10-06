@@ -197,6 +197,7 @@
                                                     <option ></option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
+                                                    <option value="O">Other</option>
                                                 </select>
                                             <span class="text-input"></span>
                                         </div>
@@ -266,7 +267,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Event Preference (Logical) *</label>
+                            <label class="form-label">Event Preference - Logical</label>
                             <div class="form-option-group">
                                 <select  id="logicalPref" name="event-logical" required>
                                     <option ></option>
@@ -278,9 +279,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Event Preference (Mystery) *</label>
+                            <label class="form-label">Event Preference - Mystery</label>
                             <div class="form-option-group">
-                                <select  id="mysterPref" name="event-mystery" required
+                                <select  id="mysterPref" name="event-mystery" required>
                                     <option ></option>
                                     <option value="SCB">Science Crime Busters</option>
                                     <option value="Galactica">Galactica</option>
@@ -289,34 +290,34 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Event Preference (Engineering) *</label>
+                            <label class="form-label">Event Preference - Engineering</label>
                             <div class="form-option-group">
                                 <select  id="engrPref" name="event-engineering" required>
                                     <option ></option>
                                     <option value="Seige">Seige</option>
                                     <option value="GearUp">Gear Up</option>
                                     <option value="RoboWars">Robo Wars</option>
+                                    <option value="DrogoneWars">Drogone Wars</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="form-label">Explain your choice of events:</label>
+                            <textarea rows="5" cols="140" class="wordCount" name="event-explain"></textarea>
+                            <span class="text-input">Not more than 150 words.</span>
+                        </div>
+                        <div class="form-group">
                             <label class="form-label">Did any Campus Ambassador refer you to PsiFi?</label>
                             <div class="form-option-group">
-                                <select id="CArefer" name="event-CArefer">
-                                    <option ></option>
+                                <select id="event-CArefer" name="event-CArefer">
                                     <option value=1>Yes</option>
                                     <option value=0>No</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Explain your choice of events:</label>
-                            <input type="text"  class="wordCount" name="event-explain" />
-                            <span class="text-input">Not more than 150 words.</span>
-                        </div>
-                        <div class="form-group">
                             <label class="form-label">Name of the Campus Ambassador:</label>
-                            <input type="text"  name="event-ambassadorName" />
+                            <input type="text" name="event-ambassadorName" />
                         </div>
                         <div class="form-group">
                             <label for="phone" class="form-label">Mobile Number of Campus Ambassador</label>
@@ -419,6 +420,10 @@
             ;
         }
         
+        textarea{
+            resize: none
+        }
+
         .text-input {
             margin-bottom: 15px;
         }
