@@ -216,24 +216,24 @@
     appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="School" || $(this).val()=="University"){
-            togglePrivate("inst-advisor",true,true,"empty")
-            togglePrivate("inst-name",true,false,"empty")
+            //togglePrivate("inst-advisor",true,true,"empty")
+            //togglePrivate("inst-name",true,false,"empty")
             togglePrivate("inst-email",true,false,"empty@empty.com")
             togglePrivate("inst-phone",true,false,"00000000000")
             togglePrivate("inst-principalEmail",true,false,"empty@empty.com")
-            togglePrivate("inst-address",true,false,"NNNNNNNNNNNNNNNNN")
-            togglePrivate("inst-city",true,false,"empty")
-            togglePrivate("inst-country",true,true,"empty")
+            //togglePrivate("inst-address",true,false,"NNNNNNNNNNNNNNNNN")
+            //togglePrivate("inst-city",true,false,"empty")
+            //togglePrivate("inst-country",true,true,"empty")
         }
         else if($(this).val()=="Privately"){
-            togglePrivate("inst-advisor",false,true,"empty")
-            togglePrivate("inst-name",false,false,"empty")
+            //togglePrivate("inst-advisor",false,true,"empty")
+            //togglePrivate("inst-name",false,false,"empty")
             togglePrivate("inst-email",false,false,"empty@empty.com")
             togglePrivate("inst-phone",false,false,"00000000000")
             togglePrivate("inst-principalEmail",false,false,"empty@empty.com")
-            togglePrivate("inst-address",false,false,"NNNNNNNNNNNNNNNNN")
-            togglePrivate("inst-city",false,false,"empty")
-            togglePrivate("inst-country",false,true,"empty")
+            // togglePrivate("inst-address",false,false,"NNNNNNNNNNNNNNNNN")
+            // togglePrivate("inst-city",false,false,"empty")
+            // togglePrivate("inst-country",false,true,"empty")
         }
 
         if ($(this).val()=="U"){ //must also limit events for UNI
