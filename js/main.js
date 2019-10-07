@@ -193,9 +193,11 @@
         }
         else if(!show && select){
             $("[name="+name+"] option:first-child").html(dummy)
-            $("[name="+name+"]").val(false)
-            $("[name="+name+"]").parent().prev().hide()
-            $("[name="+name+"]").parent().hide()
+            //$("[name="+name+"] option:first-child").attr("selected")
+            $("[name="+name+"] option").removeAttr("selected")
+            $("[name="+name+"] option:first-child").attr("selected")
+            // $("[name="+name+"]").parent().prev().hide()
+            // $("[name="+name+"]").parent().hide()
         
         }
         
@@ -206,8 +208,8 @@
         }
         else{
             $("[name="+name+"]").val(dummy)
-            $("[name="+name+"]").parent().prev().hide()
-            $("[name="+name+"]").parent().hide()
+            // $("[name="+name+"]").parent().prev().hide()
+            // $("[name="+name+"]").parent().hide()
         }
 
     }
@@ -224,7 +226,7 @@
             togglePrivate("inst-country",true,true,"empty")
         }
         else if($(this).val()=="Privately"){
-            togglePrivate("inst-advisor",false,true)
+            togglePrivate("inst-advisor",false,true,"empty")
             togglePrivate("inst-name",false,false,"empty")
             togglePrivate("inst-email",false,false,"empty@empty.com")
             togglePrivate("inst-phone",false,false,"00000000000")
