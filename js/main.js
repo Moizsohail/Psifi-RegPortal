@@ -47,12 +47,14 @@
         payload['inst'] = {};
         payload['member'] = [];
         payload['event'] = {};
+        payload['headDelegate'] = {};
         let i = 0;
         $('form input,form select').not(`#temp-part-content input,
             #temp-part-content select, .removed`).serializeArray().forEach(function(a){
             let value = parseString(a['value'])
             let sec_name = a['name'].split('-')[0]
             let data_name = a['name'].split('-')[1]
+            console.log(sec_name)
             if(payload[sec_name].constructor != Array){
                 payload[sec_name][data_name]=value
             }
@@ -493,7 +495,7 @@
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
-        startIndex:1,
+        startIndex:2,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
