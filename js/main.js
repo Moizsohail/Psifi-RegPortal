@@ -184,7 +184,7 @@
     // $(document).on('change','[name=member-firstName]',function(){
     //     $('#headDelegate')'<option>'+$(this).val()+'</option>'
     // })
-    function togglePrivate(name,show,select){
+    function togglePrivate(name,show,select,dummy){
         if(show && select){
             $("[name="+name+"] option:first-child").html('')
             $("[name="+name+"]").parent().show()
@@ -192,7 +192,7 @@
         
         }
         else if(!show && select){
-            $("[name="+name+"] option:first-child").html('empty')
+            $("[name="+name+"] option:first-child").html(dummy)
             $("[name="+name+"]").val(false)
             $("[name="+name+"]").parent().prev().hide()
             $("[name="+name+"]").parent().hide()
@@ -205,7 +205,7 @@
             $("[name="+name+"]").parent().prev().show()
         }
         else{
-            $("[name="+name+"]").val('empty')
+            $("[name="+name+"]").val(dummy)
             $("[name="+name+"]").parent().prev().hide()
             $("[name="+name+"]").parent().hide()
         }
@@ -214,24 +214,24 @@
     appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="School" || $(this).val()=="University"){
-            togglePrivate("inst-advisor",true,true)
-            togglePrivate("inst-name",true,false)
-            togglePrivate("inst-email",true,false)
-            togglePrivate("inst-phone",true,false)
-            togglePrivate("inst-principalEmail",true,false)
-            togglePrivate("inst-address",true,false)
-            togglePrivate("inst-city",true,false)
-            togglePrivate("inst-country",true,true)
+            togglePrivate("inst-advisor",true,true,"empty")
+            togglePrivate("inst-name",true,false,"empty")
+            togglePrivate("inst-email",true,false,"empty@empty.com")
+            togglePrivate("inst-phone",true,false,"00000000000")
+            togglePrivate("inst-principalEmail",true,false,"empty@empty.com")
+            togglePrivate("inst-address",true,false,"NNNNNNNNNNNNNNNNN")
+            togglePrivate("inst-city",true,false,"empty")
+            togglePrivate("inst-country",true,true,"empty")
         }
         else if($(this).val()=="Privately"){
-            togglePrivate("inst-advisor",false,true)   
-            togglePrivate("inst-name",false,false)
-            togglePrivate("inst-email",false,false)
-            togglePrivate("inst-phone",false,false)
-            togglePrivate("inst-principalEmail",false,false)
-            togglePrivate("inst-address",false,false)
-            togglePrivate("inst-city",false,false)
-            togglePrivate("inst-country",false,true)
+            togglePrivate("inst-advisor",false,true)
+            togglePrivate("inst-name",false,false,"empty")
+            togglePrivate("inst-email",false,false,"empty@empty.com")
+            togglePrivate("inst-phone",false,false,"00000000000")
+            togglePrivate("inst-principalEmail",false,false,"empty@empty.com")
+            togglePrivate("inst-address",false,false,"NNNNNNNNNNNNNNNNN")
+            togglePrivate("inst-city",false,false,"empty")
+            togglePrivate("inst-country",false,true,"empty")
         }
 
         if ($(this).val()=="U"){ //must also limit events for UNI
