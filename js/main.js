@@ -55,7 +55,7 @@
             let sec_name = a['name'].split('-')[0]
             let data_name = a['name'].split('-')[1]
             
-            else if(payload[sec_name].constructor != Array){
+            if(payload[sec_name].constructor != Array){
                 payload[sec_name][data_name]=value
             }
             else{
