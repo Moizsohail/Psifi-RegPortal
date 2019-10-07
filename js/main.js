@@ -179,9 +179,7 @@
             error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
         })
     })  
-    $(document).on('click','.lowerbutton',function(){
-        window.location.href="portal.html?token="+ sessionStorage['token']
-    })
+    
     function togglePrivate(name,show,select){
         if(show && select){
             $("[name="+name+"] option:first-child").html('')
