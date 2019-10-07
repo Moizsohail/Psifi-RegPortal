@@ -49,7 +49,7 @@
         payload['event'] = {};
         payload['headDelegate'] = {};
         let i = 0;
-        $('form input,form select').not(`#temp-part-content input,
+        $('form input,form select,form textarea').not(`#temp-part-content input,
             #temp-part-content select, .removed`).serializeArray().forEach(function(a){
             let value = parseString(a['value'])
             let sec_name = a['name'].split('-')[0]
