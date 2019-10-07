@@ -213,7 +213,7 @@
     }
     appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
-        if($(this).val()=="S" || $(this).val()=="U"){
+        if($(this).val()=="School" || $(this).val()=="University"){
             togglePrivate("inst-advisor",true,true)
             togglePrivate("inst-name",true,false)
             togglePrivate("inst-email",true,false)
@@ -223,7 +223,7 @@
             togglePrivate("inst-city",true,false)
             togglePrivate("inst-country",true,true)
         }
-        else if($(this).val()=="P"){
+        else if($(this).val()=="Privately"){
             togglePrivate("inst-advisor",false,true)   
             togglePrivate("inst-name",false,false)
             togglePrivate("inst-email",false,false)
