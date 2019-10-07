@@ -179,7 +179,9 @@
             error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
         })
     })  
-    
+    // $(document).on('change','[name=member-firstName]',function(){
+    //     $('#headDelegate')'<option>'+$(this).val()+'</option>'
+    // })
     function togglePrivate(name,show,select){
         if(show && select){
             $("[name="+name+"] option:first-child").html('')
@@ -303,7 +305,7 @@
         participant_header.attr('id','');
         participant_content.css('display','block');
         participant_content.attr('id','');
-        $("#headDeleg").append('<option value="' +  number_of_tabs +'">Team Member '+ number_of_tabs +'</option>');
+        $("#headDelegate").append('<option value="' +  number_of_tabs +'">Team Member '+ number_of_tabs +'</option>');
         
         
         $('#part-group').append(participant_header);
@@ -325,7 +327,7 @@
         }
 
         console.log(number_of_tabs);
-        $("#headDeleg").find('[value="' + number_of_tabs + '"]').remove();
+        $("#headDelegate").find('[value="' + number_of_tabs + '"]').remove();
         number_of_tabs--;
 
         $(this).parent().next().remove()
@@ -491,7 +493,7 @@
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
-        startIndex:0,
+        startIndex:1,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
