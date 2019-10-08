@@ -14,6 +14,63 @@
     //   $(this).next().html($(this).val().length+'/150 words')
     // });
 
+    // const img  = new Image();
+    // img.src = "images/1.jpg";
+    // img.onload = () => {
+    //     const canvas = document.getElementById('my-canvas');
+
+    //     canvas.width = img.width;
+    //     canvas.height = img.height;
+    //     console.log(img.width)
+    //     console.log(canvas.width)
+    //     canvas.getContext('2d').drawImage(img,0,0,img.width,img.height);
+    // }
+    
+    $(document).on('change','.fileButton',function(e){
+        if(event.target.files.length === 0)
+        {
+            return;
+        }
+        const reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = event => {
+            const img  = new Image();
+            img.src = event.target.result
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width
+                canvas.height = img.height
+                let ctx = canvas.getContext('2d')
+                ctx.drawImage(img,0,0);
+                var cimg    = canvas.toDataURL("image/jpeg",0.2);
+                document.write('<img src="'+cimg+'"/>');
+            }
+            
+            
+        }
+        })
+        // reader.readAsArrayBuffer(e.target.files[0]);
+        // reader.onload = event => {
+        //     console.log(event)
+        //     const img = new Image();
+        //     img.src = event.target.result;
+        //     img.onload = () => {
+        //             const myCanvas = document.getElementById('my-canvas');
+                    
+        //             const ctx = myCanvas.getContext('2d');
+        //             // img.width and img.height will contain the original dimensions
+                    // ctx.drawImage(img,0,0);
+                    // ctx.canvas.toBlob((blob)=> {
+                    //     const file = new File([blob], e.target.files[0]['name'], {
+                    //         type: 'image/jpeg',
+                    //         lastModified: Date.now()
+                    //     });
+                    // }, 'image/jpeg', 0.7);
+        //         },
+        //         reader.onerror = error => console.log(error);
+    //};
+
+    // })
     $(document).on('keypress','.wordCount',function(e){
         if($(this).val().length + 1> 150){
             e.preventDefault()
@@ -497,7 +554,7 @@
         headerTag: "h3",
         bodyTag: "fieldset",
         enableAllSteps:true,
-        startIndex:2,
+        startIndex:1,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
