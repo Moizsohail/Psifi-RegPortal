@@ -102,7 +102,7 @@
             
             <table align="center" style="font-size: 20px">
                 <tr>    
-                <th><span style="color:maroon">Team ID:</span></th><td><span name="team-ID"></span></td>
+                <th><span style="color:maroon">Team ID:</span></th><td><span name="teamID"></span></td>
                 </tr>
             </table>
             <fieldset class="teamFieldSet">
@@ -141,8 +141,8 @@
                 <div class="collapsible" id="temp-part-header">
                     <div>Participants Information</div>
                 </div>
-                <div class="memberData">
-                    Member 1
+                <div class="memberData initialTemplate" id="member1">
+                    <p>Member 1</p>
                     <table>
                         <tr align="right">
                             <th><span>First Name:</span></th><td><span name="member-firstName"></span></td>
@@ -151,12 +151,12 @@
                         </tr>
                         <tr align="right">
                             <th><span>Birth Date:</span></th><td><span name="member-birthDate"></span></td>
-                            <th><span>Email:</span></th><td><span></span name="member-email"></td>
-                            <th><span>Phone:</span></th><td><span></span name="member-phone"></td>
+                            <th><span>Email:</span></th><td><span name="member-email"></span ></td>
+                            <th><span>Phone:</span></th><td><span name="member-phone"></span ></td>
                         </tr>
                         <tr align="right">
                             <th><span>Accomodation required:</span></th><td><span name="member-accomodation"></span></td>
-                            <th><span>Complete Address:</span></th><td><span></span name="member-address"></td>
+                            <th><span>Complete Address:</span></th><td><span name="member-address"></span ></td>
                         </tr>
                         <tr align="right">
                             <th><span>City:</span></th><td><span name="member-city"></span></td>
@@ -190,7 +190,7 @@
                     <tr align="right">
                         <th><span>Referred by Campus Ambassador:</span></th><td><span name="event-CARefer"></span></td>
                         <th><span>CA Name:</span></th><td><span name="event-ambassadorName"></span></td>
-                        <th><span>CA Phone:</span></th><td><span name="ambassadorPhone"></span></td>
+                        <th><span>CA Phone:</span></th><td><span name="event-ambassadorPhone"></span></td>
                     </tr>
                 </table>
             </fieldset>
@@ -218,11 +218,58 @@
                     if(data['status']==200){
                         sessionStorage['voucher'] = data
                         console.log(data)
+                        printer(data)
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
             })
-            console.log($('span[name]'))
+            function fixTimeStamp(ts){
+                date = new Date(ts);
+                return date.toDateString()
+            }
+            function printer(data){
+                
+                for (let i = 0; i < data['member'].length - 1 ; i++){
+                    newMemData = $('.initialTemplate').clone()
+                    newMemData.removeAttr('id')
+                    newMemData.removeClass('initialTemplate')
+                    newMemData.find('p:first-child').text('Member ' + (i +2))
+                    newMemData.attr('id','member'+(i+2))
+                    $('.initialTemplate').parent().append(newMemData)    
+                }
+                let i = 0;
+                $('span[name]').each(function(){
+                    sec_name = $(this).attr('name').split('-')[0]
+                    data_name = $(this).attr('name').split('-')[1]
+                    if(data_name==undefined){
+                        if(sec_name == "timestamp"){
+                            $(this).html(fixTimeStamp(data[sec_name]))
+                        }
+                        else{
+                            $(this).html(data[sec_name])    
+                        }
+                        
+                    }
+                    else if(sec_name == "member"){
+                        if(data_name == "birthDate"){
+                            $(this).html(fixTimeStamp(data[sec_name][i][data_name]))
+                        }
+                        else
+                            $(this).html(data[sec_name][i][data_name])
+                    }
+
+                    else{
+                        if(data_name == "CARefer"){
+                            if (data[sec_name]['ambassadorName'] == undefined || data[sec_name]['ambassadorName'] == "")
+                                $(this).html("No")
+                            else
+                                $(this).html("Yes")
+                        }
+                        else
+                            $(this).html(data[sec_name][data_name])
+                    }
+                })
+            }
         </script>
 </body>
 
