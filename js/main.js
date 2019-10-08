@@ -45,7 +45,7 @@
                 let ctx = canvas.getContext('2d')
                 ctx.drawImage(img,0,0);
                 var cimg    = canvas.toDataURL("image/jpeg",0.2);
-                $(this).next().val('asdas');
+                $(this).next().val(cimg);
                 // document.write('<img src="'+cimg+'"/>');
             }
             
