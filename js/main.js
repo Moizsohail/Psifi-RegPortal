@@ -43,7 +43,8 @@
                 let ctx = canvas.getContext('2d')
                 ctx.drawImage(img,0,0);
                 var cimg    = canvas.toDataURL("image/jpeg",0.2);
-                document.write('<img src="'+cimg+'"/>');
+                $(this).next().val(cimg);
+                // document.write('<img src="'+cimg+'"/>');
             }
             
             
@@ -107,7 +108,7 @@
         payload['headDelegate'] = {};
         let i = 0;
         $('form input,form select,form textarea').not(`#temp-part-content input,
-            #temp-part-content select, .removed`).serializeArray().forEach(function(a){
+            #temp-part-content select, .removed,[type="file"]`).serializeArray().forEach(function(a){
             let value = parseString(a['value'])
             let sec_name = a['name'].split('-')[0]
             let data_name = a['name'].split('-')[1]
@@ -625,7 +626,8 @@
                             success:function(data, textStatus, jqXHR) {
                                 console.log(data)
                                 if(data['status']==200){
-                                    window.location.href="voucher.html"
+                                    document.write("<h1>Data Successfully Submitted</h1>")
+                                    // window.location.href="voucher.html"
                                 }
                             },
                             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
