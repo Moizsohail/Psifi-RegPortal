@@ -80,7 +80,7 @@
         if($(this).val().length + 1> 150){
             e.preventDefault()
         }
-        $(this).next().html($(this).val().length+'/150 words')
+        $(this).next().html($(this).val().length+1'/150 words')
     })
     $(document).on('change','#noEvents',function(x){
         switch($(this).val()){
@@ -636,12 +636,10 @@
                             contentType: "application/json",
                             dataType: 'json',
                             success:function(data, textStatus, jqXHR) {
-                                console.log(data)
                                 if(data['status']==200){
-                                    document.write("<h1>Data Successfully Submitted</h1>")
+                                    window.location.href="voucher.html"
+                                    sessionStorage['voucher'] = data
                                     console.log(data)
-                                    console.log(JSON.parse(data))
-                                    // window.location.href="voucher.html"
                                 }
                             },
                             error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
