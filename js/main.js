@@ -161,7 +161,7 @@
         onfocusout: function(element) {
             $(element).valid();
         },
-        
+
         invalidHandler: function(form, validator) {
             var errors = validator.numberOfInvalids();
             console.log(errors)
@@ -639,6 +639,8 @@
                                 console.log(data)
                                 if(data['status']==200){
                                     document.write("<h1>Data Successfully Submitted</h1>")
+                                    console.log(data)
+                                    console.log(JSON.parse(data))
                                     // window.location.href="voucher.html"
                                 }
                             },
