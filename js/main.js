@@ -636,8 +636,9 @@
                             contentType: "application/json",
                             dataType: 'json',
                             success:function(data, textStatus, jqXHR) {
+                                console.log(data)
                                 if(data['status']==200){
-                                    window.location.href="voucher.html"
+                                    //window.location.href="voucher.html"
                                     sessionStorage['voucher'] = data
                                     console.log(data)
                                 }
