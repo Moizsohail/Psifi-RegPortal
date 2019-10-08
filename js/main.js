@@ -13,19 +13,21 @@
     //   }
     //   $(this).next().html($(this).val().length+'/150 words')
     // });
+    var boolTabJumping = true;
+    var _startIndex = 2;
+    function debugMode(on){
 
-    // const img  = new Image();
-    // img.src = "images/1.jpg";
-    // img.onload = () => {
-    //     const canvas = document.getElementById('my-canvas');
+        if(!on){
+            $('form input').removeAttr('value')
+            $('form select option').removeAttr('selected')
+            $('form textarea').removeAttr('value')
+            $('[type="checkbox"]').removeAttr('checked')
+            boolTabJumping = false;
+            _startIndex = 0
+        }
 
-    //     canvas.width = img.width;
-    //     canvas.height = img.height;
-    //     console.log(img.width)
-    //     console.log(canvas.width)
-    //     canvas.getContext('2d').drawImage(img,0,0,img.width,img.height);
-    // }
-                
+    }
+    debugMode(true)
                 
     $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
@@ -159,6 +161,14 @@
         onfocusout: function(element) {
             $(element).valid();
         },
+        
+        invalidHandler: function(form, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log(errors)
+            if (errors) {                    
+                validator.errorList[0].element.focus();
+            }
+        } 
     });
     $(document).on('click',"#regSubmit",function(){
         //let payload = serialize('#signup-form')
@@ -557,8 +567,8 @@
     form.children("#tabs").steps({
         headerTag: "h3",
         bodyTag: "fieldset",
-        enableAllSteps:true,
-        startIndex:1,
+        enableAllSteps:boolTabJumping,
+        startIndex:_startIndex,
         transitionEffect: "fade",
         stepsOrientation: "vertical",
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',

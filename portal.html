@@ -15,6 +15,11 @@
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
+        input[type=checkbox]{
+            padding: 0px !important;
+            
+            float:right;
+        }
         .hideable{
             transition: 0.5s ease-out;
         }
@@ -314,6 +319,11 @@
                                     <option value="DrogoneWars">Drogone Wars</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="float:left">Do you want to apply for drogone?</label>
+                            <input type="checkbox" checked name="event-drogone">
+                            <span class="text-input">Don't select this if you have already selected 3 events</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Explain your choice of events:</label>
