@@ -80,7 +80,7 @@
         if($(this).val().length + 1> 150){
             e.preventDefault()
         }
-        $(this).next().html($(this).val().length+1'/150 words')
+        $(this).next().html($(this).val().length+1+'/150 words')
     })
     $(document).on('change','#noEvents',function(x){
         switch($(this).val()){
