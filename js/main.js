@@ -25,7 +25,9 @@
     //     console.log(canvas.width)
     //     canvas.getContext('2d').drawImage(img,0,0,img.width,img.height);
     // }
-    
+                
+                
+    $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
         if(event.target.files.length === 0)
         {
@@ -43,7 +45,7 @@
                 let ctx = canvas.getContext('2d')
                 ctx.drawImage(img,0,0);
                 var cimg    = canvas.toDataURL("image/jpeg",0.2);
-                $(this).next().val(cimg);
+                $(this).next().val('asdas');
                 // document.write('<img src="'+cimg+'"/>');
             }
             
