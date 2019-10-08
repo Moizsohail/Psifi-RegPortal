@@ -628,7 +628,8 @@
                 success:function(data, textStatus, jqXHR) {
                     console.log(data)
                     if(data['status']==200){
-                        window.location.href="voucher.html"
+                        //window.location.href="voucher.html"
+                        console.log(data)
                         $.ajax({
                             url:"http://spades.lums.edu.pk/portal/data?token="+sessionStorage['token'],
                             type: "POST",
@@ -638,7 +639,6 @@
                             success:function(data, textStatus, jqXHR) {
                                 console.log(data)
                                 if(data['status']==200){
-                                    //window.location.href="voucher.html"
                                     sessionStorage['voucher'] = data
                                     console.log(data)
                                 }
