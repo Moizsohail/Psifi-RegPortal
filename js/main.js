@@ -250,11 +250,11 @@
         }
         else if(!show && select){
             $("[name="+name+"] option:first-child").html(dummy)
-            //$("[name="+name+"] option:first-child").attr("selected")
+            // $("[name="+name+"] option:first-child").attr("selected")
             $("[name="+name+"] option").removeAttr("selected")
             $("[name="+name+"] option:first-child").attr("selected")
-            // $("[name="+name+"]").parent().prev().hide()
-            // $("[name="+name+"]").parent().hide()
+            $("[name="+name+"]").parent().prev().hide()
+            $("[name="+name+"]").parent().hide()
         
         }
         
@@ -265,8 +265,8 @@
         }
         else{
             $("[name="+name+"]").val(dummy)
-            // $("[name="+name+"]").parent().prev().hide()
-            // $("[name="+name+"]").parent().hide()
+            $("[name="+name+"]").parent().prev().hide()
+            $("[name="+name+"]").parent().hide()
         }
 
     }
@@ -521,6 +521,7 @@
             'event-engineering':{  //length restricted by options
             },
             'event-explain':{
+                required:true
                 maxlength: 150
             },
             'event-CArefer':{
@@ -614,6 +615,21 @@
                 success:function(data, textStatus, jqXHR) {
                     console.log(data)
                     if(data['status']==200){
+                        window.location.href="voucher.html"
+                        $.ajax({
+                            url:"http://spades.lums.edu.pk/portal/data?token="+sessionStorage['token'],
+                            type: "POST",
+                            data: payload,
+                            contentType: "application/json",
+                            dataType: 'json',
+                            success:function(data, textStatus, jqXHR) {
+                                console.log(data)
+                                if(data['status']==200){
+                                    window.location.href="voucher.html"
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+                        })
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
