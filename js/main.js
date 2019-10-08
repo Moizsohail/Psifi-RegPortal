@@ -521,7 +521,7 @@
             'event-engineering':{  //length restricted by options
             },
             'event-explain':{
-                required:true
+                required:true,
                 maxlength: 150
             },
             'event-CArefer':{
