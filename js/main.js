@@ -283,7 +283,7 @@
             //togglePrivate("inst-city",true,false,"empty")
             //togglePrivate("inst-country",true,true,"empty")
         }
-        else if($(this).val()=="Privately-Uni"|| $(this).val()=="Privately-Sch"){
+        else if($(this).val()=="Privately_Uni"|| $(this).val()=="Privately_Sch"){
             //togglePrivate("inst-advisor",false,true,"empty")
             //togglePrivate("inst-name",false,false,"empty")
             togglePrivate("inst-email",false,false,"empty@empty.com")
@@ -294,7 +294,7 @@
             // togglePrivate("inst-country",false,true,"empty")
         }
 
-        if ($(this).val()=="University"||$(this).val()=="Privately-Uni"){ //must also limit events for UNI
+        if ($(this).val()=="University"||$(this).val()=="Privately_Uni"){ //must also limit events for UNI
             $("#logicalPref").empty();
             $("#mysterPref").empty();
             $("#engrPref").empty();
