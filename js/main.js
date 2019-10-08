@@ -630,21 +630,6 @@
                     if(data['status']==200){
                         //window.location.href="voucher.html"
                         console.log(data)
-                        $.ajax({
-                            url:"http://spades.lums.edu.pk/portal/data?token="+sessionStorage['token'],
-                            type: "POST",
-                            data: payload,
-                            contentType: "application/json",
-                            dataType: 'json',
-                            success:function(data, textStatus, jqXHR) {
-                                console.log(data)
-                                if(data['status']==200){
-                                    sessionStorage['voucher'] = data
-                                    console.log(data)
-                                }
-                            },
-                            error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
-                        })
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
