@@ -628,7 +628,7 @@
                 success:function(data, textStatus, jqXHR) {
                     console.log(data)
                     if(data['status']==200){
-                        //window.location.href="voucher.html"
+                        window.location.href="voucher.html"
                         console.log(data)
                     }
                 },
