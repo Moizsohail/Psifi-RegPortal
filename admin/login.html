@@ -9,7 +9,8 @@
     <title>Psifi Admin Login</title>
 
     <!-- Font Icon -->
-    
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
@@ -89,8 +90,8 @@
             <form method="POST" id="admin-form-id" class="admin-form" action="#">
                 <h2>Admin Login</h2>
                 <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="text"  name="email"/>
+                    <label class="form-label">User Name</label>
+                    <input type="text"  name="username"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Password</label>
@@ -114,7 +115,7 @@
 	        console.log(payload)
 	        payload = JSON.stringify(payload)
 	        $.ajax({
-	            url:"http://spades.lums.edu.pk/api/login/submit",
+	            url:"http://spades.lums.edu.pk/api/admin/login/submit",
 	            type: "POST",
 	            data: payload,
 	            contentType: "application/json",
