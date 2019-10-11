@@ -143,6 +143,7 @@
                 </div>
                 <div class="memberData initialTemplate" id="member1">
                     <p>Member 1</p>
+                    <img src="" width="200px">
                     <table>
                         <tr align="right">
                             <th><span>First Name:</span></th><td><span name="member-firstName"></span></td>
@@ -251,6 +252,9 @@
                         
                     }
                     else if(sec_name == "member"){
+                        if(data_name == "photo"){
+                            $(this).attr('src',data[sec_name][i][data_name])
+                        }
                         if(data_name == "birthDate"){
                             $(this).html(fixTimeStamp(data[sec_name][i][data_name]))
                         }

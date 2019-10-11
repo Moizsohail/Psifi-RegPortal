@@ -13,6 +13,7 @@
     //   }
     //   $(this).next().html($(this).val().length+'/150 words')
     // });
+    
     var boolTabJumping = true;
     var _startIndex = 2;
     function debugMode(on){
