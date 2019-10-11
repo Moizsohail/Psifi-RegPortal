@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psifi Admin Login</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+        #add-participants {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .form-row>.content {
+            padding: 10px 18px 0px 18px;
+            max-height: 0;
+            float: left;
+            width: 95%;
+            display: block;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .form-option-group select {
+            -webkit-appearance: menulist !important;
+            ;
+        }
+        
+        .text-input {
+            margin-bottom: 15px;
+        }
+        .container{
+            width: 400px;
+        }
+        h2{
+            color: darkcyan;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        .form-group{
+            padding: 10px 40px 10px 40px;
+        }
+        .center{
+            padding-left: 30%;
+        }
+        .cbtn{
+            width:140px;
+            height: 50px;
+            color: #ffff;
+            background: darkcyan;
+            -webkit-align-items:center;
+            -moz-align-items:center;
+            align-items:center;
+            -o-align-items:center;
+            -ms-align-items:center;
+            justify-content:center;
+            -moz-justify-content:center;
+            -webkit-justify-content:center;
+            -o-justify-content:center;
+            -ms-justify-content:center;
+            text-decoration:center;
+            cursor:pointer;
+            display:flex;
+            display:-webkit-flex;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" id="admin-form-id" class="admin-form" action="#">
+                <h2>Admin Login</h2>
+                <div class="form-group">
+                    <label class="form-label">User Name</label>
+                    <input type="text"  name="username"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="text"  name="password"/>
+                </div>
+                <div class="form-group center">
+                    <a class="cbtn"  id="loginSubmit">Login</a>
+                </div>
+            </form>    
+        </div>
+
+        <!-- JS -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+        <script src="vendor/minimalist-picker/dobpicker.js"></script>
+        <script src="vendor/nouislider/nouislider.min.js"></script>
+        <script src="vendor/wnumb/wNumb.js"></script>
+        <script src="js/country.js"></script>
+        <script src="js/main.js"></script>
+</body>
+
+</html>
