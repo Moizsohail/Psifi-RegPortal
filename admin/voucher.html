@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psifi Voucher</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+        .middle {
+          transition: .5s ease;
+          opacity: 0;
+          position: absolute;
+          top: 32%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          text-align: center;
+        }
+
+        .text {
+          background-color: #4CAF50;
+          color: white;
+          font-size: 16px;
+          padding: 16px 32px;
+        }
+        
+        .text:hover {
+          background-color: #a2baa3;
+        }
+
+        .collapsible>div:first-child {
+            flex-grow: 3;
+        }
+        
+        .collapsible>div {
+            padding: 18px;
+        }
+        
+        .collapsible>div:hover {
+            background-color: maroon;
+        }
+        
+        .collapsible {
+            background-color: midnightblue;
+            color: white;
+            cursor: pointer;
+            border: none;
+            text-align: left;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+        }
+        
+        .active {
+            background-color: #555;
+        }
+        
+        .form-row>.content {
+            padding: 10px 18px 0px 18px;
+            max-height: 0;
+            float: left;
+            width: 95%;
+            display: block;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .form-option-group select {
+            -webkit-appearance: menulist !important;
+            ;
+        }
+        
+        .container{
+            width: 800px;
+        }
+
+        h2{
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <h2>PSIFI XI Voucher</h2>
+            
+            <table align="center" style="font-size: 20px">
+                <tr>    
+                <th><span style="color:maroon">Team ID:</span></th><td><span name="teamID"></span></td>
+                </tr>
+            </table>
+            <fieldset class="teamFieldSet">
+                <table>
+                    <tr>
+                        <th><span>Timestamp:</span></th>
+                        <td><span name="timestamp"></span></td>
+                    </tr>
+                </table>
+                <div class="collapsible" id="temp-part-header">
+                    <div>Team Information</div>
+                </div>
+                <table>
+                    <tr align="right">
+                        <th><span>Applying Through:</span></th><td><span name="inst-type"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Faculty Advisor:</span></th><td><span name="inst-city"></span></td>
+                        <th><span>Institute Name:</span></th><td><span name="inst-name"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Institute Email:</span></th><td><span name="inst-email"></span></td>
+                        <th><span>Institute Phone:</span></th><td><span name="inst-phone"></span></td>
+                        <th><span>Principal Email:</span></th><td><span name="inst-principalEmail"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Address:</span></th><td><span name="inst-address"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>City:</span></th><td><span name="inst-city"></span></td>
+                        <th><span>Country:</span></th><td><span name="inst-country"></span></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <div class="collapsible" id="temp-part-header">
+                    <div>Participants Information</div>
+                </div>
+                <div class="memberData initialTemplate" id="member1">
+                    <p>Member 1</p>
+                    <img src="" width="200px">
+                    <table>
+                        <tr align="right">
+                            <th><span>First Name:</span></th><td><span name="member-firstName"></span></td>
+                            <th><span>Last Name:</span></th><td><span name="member-lastName"></span></td>
+                            <th><span>Gender:</span></th><td><span name="member-gender"></span></td>
+                        </tr>
+                        <tr align="right">
+                            <th><span>Birth Date:</span></th><td><span name="member-birthDate"></span></td>
+                            <th><span>Email:</span></th><td><span name="member-email"></span ></td>
+                            <th><span>Phone:</span></th><td><span name="member-phone"></span ></td>
+                        </tr>
+                        <tr align="right">
+                            <th><span>Accomodation required:</span></th><td><span name="member-accomodation"></span></td>
+                            <th><span>Complete Address:</span></th><td><span name="member-address"></span ></td>
+                        </tr>
+                        <tr align="right">
+                            <th><span>City:</span></th><td><span name="member-city"></span></td>
+                            <th><span>Country:</span></th><td><span name="member-country"></span></td>
+                            <th><span>CNIC/B-form Number:</span></th><td><span name="member-cnic"></span></td>
+                        </tr>
+                        <tr align="right">
+                            <th><span>Guardian First Name:</span></th><td><span name="member-firstNameGaurdian"></span></td>
+                            <th><span>Last Name:</span></th><td><span name="member-lastNameGaurdian"></span></td>
+                            <th><span>Phone:</span></th><td><span name="member-phoneGaurdian"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="collapsible" id="temp-part-header">
+                    <div>Event Information</div>
+                </div>
+                <table>
+                    <tr align="right">
+                        <th><span>Number of Events:</span></th><td><span name="event-number"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Logical Pref:</span></th><td><span name="event-logical"></span></td>
+                        <th><span>Mystery Pref:</span></th><td><span name="event-mystery"></span></td>
+                        <th><span>Engineering Pref:</span></th><td><span name="event-engineering"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Explanation for choice:</span></th><td><span name="event-explain"></span></td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Referred by Campus Ambassador:</span></th><td><span name="event-CARefer"></span></td>
+                        <th><span>CA Name:</span></th><td><span name="event-ambassadorName"></span></td>
+                        <th><span>CA Phone:</span></th><td><span name="event-ambassadorPhone"></span></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br><br>
+    </div>
+
+        <!-- JS -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+        <script src="vendor/minimalist-picker/dobpicker.js"></script>
+        <script src="vendor/nouislider/nouislider.min.js"></script>
+        <script src="vendor/wnumb/wNumb.js"></script>
+        <script src="js/country.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            $.ajax({
+                url:"http://spades.lums.edu.pk/portal/data?token="+sessionStorage['token'],
+                type: "POST",
+                contentType: "application/json",
+                dataType: 'json',
+                success:function(data, textStatus, jqXHR) {
+                    console.log(data)
+                    if(data['status']==200){
+                        sessionStorage['voucher'] = data
+                        console.log(data)
+                        printer(data)
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+            })
+            function fixTimeStamp(ts){
+                date = new Date(ts);
+                return date.toDateString()
+            }
+            function printer(data){
+                
+                for (let i = 0; i < data['member'].length - 1 ; i++){
+                    newMemData = $('.initialTemplate').clone()
+                    newMemData.removeAttr('id')
+                    newMemData.removeClass('initialTemplate')
+                    newMemData.find('p:first-child').text('Member ' + (i +2))
+                    newMemData.attr('id','member'+(i+2))
+                    $('.initialTemplate').parent().append(newMemData)    
+                }
+                let i = 0;
+                $('span[name]').each(function(){
+                    sec_name = $(this).attr('name').split('-')[0]
+                    data_name = $(this).attr('name').split('-')[1]
+                    if(data_name==undefined){
+                        if(sec_name == "timestamp"){
+                            $(this).html(fixTimeStamp(data[sec_name]))
+                        }
+                        else{
+                            $(this).html(data[sec_name])    
+                        }
+                        
+                    }
+                    else if(sec_name == "member"){
+                        if(data_name == "photo"){
+                            $(this).attr('src',data[sec_name][i][data_name])
+                        }
+                        if(data_name == "birthDate"){
+                            $(this).html(fixTimeStamp(data[sec_name][i][data_name]))
+                        }
+                        else
+                            $(this).html(data[sec_name][i][data_name])
+                    }
+
+                    else{
+                        if(data_name == "CARefer"){
+                            if (data[sec_name]['ambassadorName'] == undefined || data[sec_name]['ambassadorName'] == "")
+                                $(this).html("No")
+                            else
+                                $(this).html("Yes")
+                        }
+                        else
+                            $(this).html(data[sec_name][data_name])
+                    }
+                })
+            }
+        </script>
+</body>
+
+</html>

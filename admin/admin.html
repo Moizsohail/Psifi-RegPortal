@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- add validation for y and n -->
+<!-- all data will be sent in one package -->
 
 <head>
     <meta charset="UTF-8">
@@ -7,10 +9,6 @@
     <meta name="author" content="colorlib.com">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psifi Admin Panel</title>
-
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
@@ -183,22 +181,32 @@
                 <div class="form-group">
                     <label class="form-label">Search Via:</label>
                     <div class="form-option-group">
-                        <select  id="searchviaid" name="searchvia">
+                        <select  id="via" name="via">
                             <option ></option>
                             <option value="teamID">Team ID</option>
-                            <option value="teamName">Team Name</option>
-                            <option value="teamEmail">Team Email</option>
+                            <option value="name">Team Name</option>
+                            <option value="email">Team Email</option>
                             <option value="instName">Institute Name</option>
-                            <option value="memberName">Member Name</option>
+                            <option value="memberFirstName">Member First Name</option>
                             <option value="verified">Verified</option>
                             <option value="paid">Paid</option>
-                            <option value="showAll">Show All</option>
+                            <!-- <option value="showAll">Show All</option> -->
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Value (For Paid/Verified, use Y/N):</label>
-                    <input type="text" name="searchValue" />
+                <div class="form-group" id="value1">
+                    <label class="form-label">Value:</label>
+                    <input type="text" name="value" />
+                </div>
+                <div class="form-group" id="value2">
+                    <label class="form-label">Search Via:</label>
+                    <div class="form-option-group">
+                        <select  name="value">
+                            <option></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
                 </div>
                 <!-- Load icon library -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -209,15 +217,19 @@
 
         <!-- JS -->
         <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
-        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
-        <script src="vendor/minimalist-picker/dobpicker.js"></script>
-        <script src="vendor/nouislider/nouislider.min.js"></script>
-        <script src="vendor/wnumb/wNumb.js"></script>
-        <script src="js/country.js"></script>
-        <script src="js/main.js"></script>
 
 </body>
-
+    <script type="text/javascript">
+        $("#value2").hide()
+        $(document).on('change',"#via",function(){
+            if($(this).val() == "paid" || $(this).val() == "verified"){
+                $("#value2").show()
+                $("#value1").hide()
+            }
+            else{
+                $("#value1").show()
+                $("#value2").hide()   
+            }
+        })
+    </script>
 </html>

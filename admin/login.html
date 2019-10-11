@@ -9,9 +9,7 @@
     <title>Psifi Admin Login</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
-
+    
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
@@ -91,29 +89,49 @@
             <form method="POST" id="admin-form-id" class="admin-form" action="#">
                 <h2>Admin Login</h2>
                 <div class="form-group">
-                    <label class="form-label">User Name</label>
-                    <input type="text"  name="username"/>
+                    <label class="form-label">Email</label>
+                    <input type="text"  name="email"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Password</label>
                     <input type="text"  name="password"/>
                 </div>
                 <div class="form-group center">
-                    <a class="cbtn"  id="loginSubmit">Login</a>
+                    <a class="cbtn"  id="adminLoginSubmit">Login</a>
                 </div>
             </form>    
         </div>
 
         <!-- JS -->
         <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
-        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
-        <script src="vendor/minimalist-picker/dobpicker.js"></script>
-        <script src="vendor/nouislider/nouislider.min.js"></script>
-        <script src="vendor/wnumb/wNumb.js"></script>
-        <script src="js/country.js"></script>
-        <script src="js/main.js"></script>
 </body>
-
+	<script type="text/javascript">
+		$(document).on('click',"#adminLoginSubmit",function(){
+	        let payload  = {}; 
+	        $('#admin-form-id').serializeArray().forEach(function(a){
+	            payload[a['name']] = a['value']     
+	        })
+	        console.log(payload)
+	        payload = JSON.stringify(payload)
+	        $.ajax({
+	            url:"http://spades.lums.edu.pk/api/login/submit",
+	            type: "POST",
+	            data: payload,
+	            contentType: "application/json",
+	            dataType: 'json',
+	            success:function(data, textStatus, jqXHR) {
+	                console.log(data)
+	                if(data['status']==200){
+	                    sessionStorage['token'] = data['token'];
+	                    // window.location.href = "admin.html"
+	                    window.location.href="admin.html?token="+ sessionStorage['token'];
+	                }
+	                else{
+	                    alert(data['message'])
+	                }
+	            },
+	            error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
+        })
+    })  
+	</script>
 </html>
