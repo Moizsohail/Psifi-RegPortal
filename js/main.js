@@ -28,7 +28,7 @@
         }
 
     }
-    debugMode(true)
+    debugMode(false)
                 
     $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
