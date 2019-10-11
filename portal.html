@@ -259,7 +259,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cnic" class="form-label">Profile Photo</label>
-                                                <input validate type="file" accept="image/*" class="fileButton">
+                                                <input required type="file" accept="image/*" class="fileButton">
                                                 <input type="text" style="display: none" name="member-photo">
                                             </div>
                                         </div>
@@ -279,7 +279,6 @@
                             <label class="form-label">Number of Events you wish to participate in:</label>
                             <div class="form-option-group">
                                 <select id="noEvents" name="event-number">
-                                    <option ></option>
                                     <option value=2 >2</option>
                                     <option value=3 selected>3</option>
                                 </select>
@@ -288,7 +287,7 @@
                         <div class="form-group">
                             <label class="form-label">Event Preference - Logical</label>
                             <div class="form-option-group">
-                                <select  id="logicalPref" name="event-logical" required>
+                                <select  id="logicalPref" name="event-logical">
                                     <option ></option>
                                     <option value="TechWars" selected>Tech Wars</option>
                                     <option value="ScifinityWars">Scifinity Wars</option>
@@ -300,7 +299,7 @@
                         <div class="form-group">
                             <label class="form-label">Event Preference - Mystery</label>
                             <div class="form-option-group">
-                                <select  id="mysterPref" name="event-mystery" required>
+                                <select  id="mysterPref" name="event-mystery">
                                     <option ></option>
                                     <option value="SCB" selected>Science Crime Busters</option>
                                     <option value="Galactica">Galactica</option>
@@ -311,7 +310,7 @@
                         <div class="form-group">
                             <label class="form-label">Event Preference - Engineering</label>
                             <div class="form-option-group">
-                                <select  id="engrPref" name="event-engineering" required>
+                                <select  id="engrPref" name="event-engineering">
                                     <option ></option>
                                     <option value="Seige" selected>Seige</option>
                                     <option value="GearUp">Gear Up</option>
@@ -321,16 +320,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" style="float:left">Do you want to apply for drogone?</label>
-                            <label class="form-label">Event Preference - Engineering</label>
+                            <label class="form-label" >Drogone?</label>
                             <div class="form-option-group">
-                                <select  id="drogPref" name="event-drogone" required>
-                                    <option ></option>
+                                <select  id="drogPref" name="event-drogone" >
+                                    <option></option>
                                     <option value="Drogone" selected>Drogone</option>
                                 </select>
                             </div>
-                            <input type="checkbox" checked name="event-drogone">
-                            <span class="text-input">Don't select this if you have already selected 3 events</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Explain your choice of events:</label>

@@ -13,7 +13,7 @@
     //   }
     //   $(this).next().html($(this).val().length+'/150 words')
     // });
-    
+
     var boolTabJumping = true;
     var _startIndex = 2;
     function debugMode(on){
@@ -599,20 +599,21 @@
             return form.valid();
         },
         onFinishing: function(event, currentIndex) {
-            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref")]
-            if ($("#noEvents").val() == "2"){
-                var noSelected = 0
-                for (i = 0; i < prefs.length; i++) {
-                    if (prefs[i].val() != ""){ //some value is selected
-                        noSelected++
-                    }
-                }
-                if (noSelected != 2){
-                    alert("Please select 2 events.")
-                    $("#noEvents").focus()
-                    return false;
+            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
+            // if ($("#noEvents").val() == "2"){
+            var noSelected = 0
+
+            for (i = 0; i < prefs.length; i++) {
+                if (prefs[i].val() != ""){ //some value is selected
+                    noSelected++
                 }
             }
+            if (noSelected != parseInt($("#noEvents").val()) ){
+                alert("Please select " + parseInt($("#noEvents").val()) + " events.")
+                $("#noEvents").focus()
+                return false
+            }
+            
             form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
