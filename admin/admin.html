@@ -183,7 +183,6 @@
                     <label class="form-label">Search Via:</label>
                     <div class="form-option-group">
                         <select  id="via" name="via">
-                            <option ></option>
                             <option value="teamID">Team ID</option>
                             <option value="name">Team Name</option>
                             <option value="email">Team Email</option>
@@ -197,13 +196,12 @@
                 </div>
                 <div class="form-group" id="value1">
                     <label class="form-label">Value:</label>
-                    <input type="text" name="value" />
+                    <input type="text" name="value"/>
                 </div>
                 <div class="form-group" id="value2">
                     <label class="form-label">Search Via:</label>
                     <div class="form-option-group">
                         <select  name="value">
-                            <option></option>
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
                         </select>
@@ -211,7 +209,7 @@
                 </div>
                 <!-- Load icon library -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <button  type="submit"><i class="fa fa-search"> Search</i></button> 
+                <button  id ="searchBtn" type="submit"><i class="fa fa-search"> Search</i></button> 
             </fieldset>
             <br><br>
     </div>
@@ -232,22 +230,32 @@
                 $("#value2").hide()   
             }
         })
-        $.ajax({
-            url:"http://spades.lums.edu.pk/admin/search"+sessionStorage['token'],
-            type: "POST",
-            data: payload,
-            contentType: "application/json",
-            dataType: 'json',
-            success:function(data, textStatus, jqXHR) {
-                console.log(data)
-                if(data['status']==200){
-                    //window.location.href="portal.html?token="+ sessionStorage['token'];
-                }
-                else{
-                    alert(data['message'])
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
+        $(document).on('click','#searchBtn',function(){
+            $()
+            payload = {'search':{
+                'via': $("#id").val(),
+                'value': $('[name=value]:visible').val()
+            }}
+            payload = JSON.stringify(payload)
+            $.ajax({
+                url:"http://spades.lums.edu.pk/admin/search"+sessionStorage['token'],
+                type: "POST",
+                data: payload,
+                contentType: "application/json",
+                dataType: 'json',
+                success:function(data, textStatus, jqXHR) {
+                    console.log(data)
+                    if(data['status']==200){
+                        //window.location.href="portal.html?token="+ sessionStorage['token'];
+                    }
+                    else{
+                        alert(data['message'])
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
+            })    
         })
+        
+        
     </script>
 </html>
