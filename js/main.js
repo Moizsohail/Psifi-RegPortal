@@ -604,7 +604,7 @@
             if(!uploadComplete){
                 alert('Please wait for the upload to complete')
             }
-            return form.valid() || uploadComplete;
+            return (form.valid() || uploadComplete);
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
