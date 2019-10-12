@@ -252,9 +252,8 @@
                         
                     }
                     else if(sec_name == "member"){
-                        console.log(data_name)
-                        console.log($(this).val())
-                        if($(this).val()!="")i++;
+
+                        if($(this).html()!="")i++;
                         if(data_name == "photo"){
                             console.log('hi')
                             $(this).attr('src',data[sec_name][i][data_name])
