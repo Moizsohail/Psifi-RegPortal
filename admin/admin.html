@@ -155,20 +155,12 @@
                       <th>Paid</th>
                       <th>Details</th>
                     </tr>
-                    <tr>
-                        <td>PSIFI_S_001</td>
-                        <td>LUMS</td>
-                        <td>myteam@lums.edu.pk</td>
-                        <td>Y</td>
-                        <td>Y</td>
-                        <td><a href="">More details</a></td>
-                    </tr>
-                    <tr>
-                        <td>PSIFI_S_002</td>
-                        <td>LUMS2</td>
-                        <td>myteam2@lums.edu.pk</td>
-                        <td>Y</td>
-                        <td>Y</td>
+                    <tr style="display: none" id="demo">
+                        <td name="teamID"></td>
+                        <td name="name"></td>
+                        <td name="email"></td>
+                        <td name="verified"></td>
+                        <td name="paid"></td>
                         <td><a href="">More details</a></td>
                     </tr>
                   </table>
@@ -186,8 +178,8 @@
                             <option value="teamID">Team ID</option>
                             <option value="name">Team Name</option>
                             <option value="email">Team Email</option>
-                            <option value="instName">Institute Name</option>
-                            <option value="memberFirstName">Member First Name</option>
+                            <!-- <option value="instName">Institute Name</option> -->
+                            <!-- <option value="memberFirstName">Member First Name</option> -->
                             <option value="verified">Verified</option>
                             <option value="paid">Paid</option>
                             <!-- <option value="showAll">Show All</option> -->
