@@ -143,7 +143,7 @@
                 </div>
                 <div class="memberData initialTemplate" id="member1">
                     <p>Member 1</p>
-                    <img src="" width="200px">
+                    <img src="" name="member-photo" width="200px">
                     <table>
                         <tr align="right">
                             <th><span>First Name:</span></th><td><span name="member-firstName"></span></td>
@@ -239,7 +239,7 @@
                     $('.initialTemplate').parent().append(newMemData)    
                 }
                 let i = 0;
-                $('span[name]').each(function(){
+                $('span[name],img').each(function(){
                     sec_name = $(this).attr('name').split('-')[0]
                     data_name = $(this).attr('name').split('-')[1]
                     if(data_name==undefined){
