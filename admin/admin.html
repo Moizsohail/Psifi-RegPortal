@@ -214,7 +214,7 @@
                     <td name="email">`+arr[i]['email']+`</td>
                     <td name="verified">`+arr[i]['verified']+`</td>
                     <td name="paid">`+arr[i]['paid']+`</td>
-                    <td><a href="">More details</a></td>
+                    <td><a target="_blank" href="voucher.html?token=`+sessionStorage['token']+`&_id=`+arr[i]['_id']+`">More details</a></td>
                 </tr>`)
                 
             }
