@@ -600,7 +600,6 @@
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
-            console.log('here')
             // if ($("#noEvents").val() == "2"){
             var noSelected = 0
 
@@ -614,7 +613,7 @@
                 $("#noEvents").focus()
                 return false
             }
-            console.log('here')
+            
             form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
