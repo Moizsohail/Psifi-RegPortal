@@ -636,9 +636,9 @@
                 return false
             }
             
-            form.validate().settings.ignore = ":disabled";
+            form.validate()
             console.log(form.valid())
-            return form.valid();
+            return form.valid()
         },
         onFinished: function(event, currentIndex) {
             let payload  = serialize('#portal-form')
