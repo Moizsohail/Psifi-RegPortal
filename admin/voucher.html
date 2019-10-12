@@ -10,7 +10,7 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
@@ -84,6 +84,28 @@
             width: 800px;
         }
 
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #fff3f3;}
+
+        tr:hover {background-color: rgb(255, 235, 235);}
+
+        th {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            text-align: left;
+            background-color: rgb(242, 252, 255);
+            color: rgb(30, 35, 80);
+        }
+
         h2{
             text-align: center;
             padding-top: 30px;
@@ -118,9 +140,7 @@
                 <table>
                     <tr align="right">
                         <th><span>Applying Through:</span></th><td><span name="inst-type"></span></td>
-                    </tr>
-                    <tr align="right">
-                        <th><span>Faculty Advisor:</span></th><td><span name="inst-city"></span></td>
+                        <th><span>Faculty Advisor:</span></th><td><span name="inst-advisor"></span></td>
                         <th><span>Institute Name:</span></th><td><span name="inst-name"></span></td>
                     </tr>
                     <tr align="right">
@@ -130,8 +150,6 @@
                     </tr>
                     <tr align="right">
                         <th><span>Address:</span></th><td><span name="inst-address"></span></td>
-                    </tr>
-                    <tr align="right">
                         <th><span>City:</span></th><td><span name="inst-city"></span></td>
                         <th><span>Country:</span></th><td><span name="inst-country"></span></td>
                     </tr>
@@ -142,32 +160,32 @@
                     <div>Participants Information</div>
                 </div>
                 <div class="memberData initialTemplate" id="member1">
-                    <p>Member 1</p>
-                    <img src="" width="200px" name="member-photo">
+                    <h3>Member 1</h3>
                     <table>
                         <tr align="right">
+                            <th><img src="" name="member-photo" width="100px" height="100px"></th>
                             <th><span>First Name:</span></th><td><span name="member-firstName"></span></td>
                             <th><span>Last Name:</span></th><td><span name="member-lastName"></span></td>
-                            <th><span>Gender:</span></th><td><span name="member-gender"></span></td>
                         </tr>
                         <tr align="right">
+                            <th><span>Gender:</span></th><td><span name="member-gender"></span></td>
                             <th><span>Birth Date:</span></th><td><span name="member-birthDate"></span></td>
                             <th><span>Email:</span></th><td><span name="member-email"></span ></td>
-                            <th><span>Phone:</span></th><td><span name="member-phone"></span ></td>
                         </tr>
                         <tr align="right">
+                            <th><span>Phone:</span></th><td><span name="member-phone"></span ></td>
                             <th><span>Accomodation required:</span></th><td><span name="member-accomodation"></span></td>
                             <th><span>Complete Address:</span></th><td><span name="member-address"></span ></td>
                         </tr>
                         <tr align="right">
-                            <th><span>City:</span></th><td><span name="member-city"></span></td>
+                            <th><span>City:</span></th><td><span name="member-city"></span></td>    
                             <th><span>Country:</span></th><td><span name="member-country"></span></td>
                             <th><span>CNIC/B-form Number:</span></th><td><span name="member-cnic"></span></td>
                         </tr>
                         <tr align="right">
-                            <th><span>Guardian First Name:</span></th><td><span name="member-firstNameGaurdian"></span></td>
-                            <th><span>Last Name:</span></th><td><span name="member-lastNameGaurdian"></span></td>
-                            <th><span>Phone:</span></th><td><span name="member-phoneGaurdian"></span></td>
+                            <th><span>Guardian First Name:</span></th><td><span name="member-firstNameGaurdian"></span></td> 
+                            <th><span>Guardian Last Name:</span></th><td><span name="member-lastNameGaurdian"></span></td>
+                            <th><span>Guardian Phone:</span></th><td><span name="member-phoneGaurdian"></span></td>
                         </tr>
                     </table>
                 </div>
@@ -199,8 +217,15 @@
     </div>
 
         <!-- JS -->
-        <script src="jquery/jquery.min.js"></script>
-        
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
+        <script src="vendor/minimalist-picker/dobpicker.js"></script>
+        <script src="vendor/nouislider/nouislider.min.js"></script>
+        <script src="vendor/wnumb/wNumb.js"></script>
+        <script src="js/country.js"></script>
+        <script src="js/main.js"></script>
         <script type="text/javascript">
             args = window.location.search.substring(1).split('&')
             
@@ -223,7 +248,7 @@
             })
             function fixTimeStamp(ts){
                 date = new Date(ts);
-                return date.toDateString()
+                return date.toDateString() + " - " + date.toTimeString()
             }
             function printer(data){
                 
@@ -249,7 +274,10 @@
                         
                     }
                     else if(sec_name == "member"){
+
+
                         if(data_name == "photo"){
+                            
                             $(this).attr('src',data[sec_name][i][data_name])
                         }
                         if(data_name == "birthDate"){
@@ -261,10 +289,15 @@
                             i++;
                         }
                     }
-
                     else{
                         if(data_name == "CARefer"){
                             if (data[sec_name]['ambassadorName'] == undefined || data[sec_name]['ambassadorName'] == "")
+                                $(this).html("No")
+                            else
+                                $(this).html("Yes")
+                        }
+                        else if(data_name == "advisor"){
+                            if (data[sec_name]['advisor'] == undefined || data[sec_name]['advisor'] == "" || data[sec_name]['advisor'] == "false")
                                 $(this).html("No")
                             else
                                 $(this).html("Yes")
