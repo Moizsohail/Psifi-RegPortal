@@ -203,8 +203,8 @@
         
         <script type="text/javascript">
             args = window.location.search.substring(1).split('&')
-            console.log(args[1])
-            payload = {'_id':args[1]}
+            
+            payload = {'_id':args[1].substring(4)}
             $.ajax({
                 url:"http://spades.lums.edu.pk/admin/data?"+args[0],
                 type: "POST",
