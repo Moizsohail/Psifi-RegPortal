@@ -592,15 +592,17 @@
             }
             if (currentIndex === 1) {
                 form.parent().parent().parent().find('.footer').removeClass('footer-0').addClass('footer-' + currentIndex + '');
-            }
-            if (currentIndex === 2) {
-                form.parent().parent().parent().find('.footer').removeClass('footer-1').addClass('footer-' + currentIndex + '');
                 fields = $('[name="member-photo"]')
                 for(var i = 1;i<fields.length;i++){
                     if(fields[i].value == ""){
+                        alert("You may have forgotten to upload the image")
                         return false;
                     }
                 }
+            }
+            if (currentIndex === 2) {
+                form.parent().parent().parent().find('.footer').removeClass('footer-1').addClass('footer-' + currentIndex + '');
+                
                 
             }
             if (currentIndex === 3) {
