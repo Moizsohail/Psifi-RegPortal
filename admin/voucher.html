@@ -236,7 +236,7 @@
                     $('.initialTemplate').parent().append(newMemData)    
                 }
                 let i = 0;
-                $('span[name]').each(function(){
+                $('span[name],img').each(function(){
                     sec_name = $(this).attr('name').split('-')[0]
                     data_name = $(this).attr('name').split('-')[1]
                     if(data_name==undefined){
