@@ -628,6 +628,7 @@
             }
             
             form.validate().settings.ignore = ":disabled";
+            console.log(form.valid())
             return form.valid();
         },
         onFinished: function(event, currentIndex) {
