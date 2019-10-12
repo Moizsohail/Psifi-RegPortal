@@ -28,7 +28,7 @@
         }
 
     }
-    debugMode(false)
+    debugMode(true)
     var uploadComplete = true;         
     // $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
@@ -608,9 +608,6 @@
             if (currentIndex === 3) {
                 form.parent().parent().parent().find('.footer').removeClass('footer-2').addClass('footer-' + currentIndex + '');
             }
-            // if(currentIndex === 4) {
-            //     form.parent().parent().parent().append('<div class="footer" style="height:752px;"></div>');
-            // }
 
             form.validate().settings.ignore = ":disabled,:hidden";
             if(!uploadComplete){
@@ -621,8 +618,7 @@
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
-            // if ($("#noEvents").val() == "2"){
-            console.log('hi')
+
             var noSelected = 0
 
             for (i = 0; i < prefs.length; i++) {
@@ -635,10 +631,12 @@
                 $("#noEvents").focus()
                 return false
             }
-            
-            form.validate()
-            console.log(form.valid())
-            return form.valid()
+
+            // added validation to HTML side
+            //form.validate().settings.ignore = ":disabled";
+            //console.log(form.valid())
+            // return form.valid();
+            return true;
         },
         onFinished: function(event, currentIndex) {
             let payload  = serialize('#portal-form')
