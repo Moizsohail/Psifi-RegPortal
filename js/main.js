@@ -29,9 +29,11 @@
 
     }
     debugMode(true)
-                
+    var uploadComplete = true;         
     $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
+        uploadComplete = false;
+        $(this).next.next.html('Uploading')
         if(event.target.files.length === 0)
         {
             return;
@@ -54,6 +56,8 @@
             
             
         }
+        $(this).next.next.html('Done')
+        uploadComplete = true;
         })
         // reader.readAsArrayBuffer(e.target.files[0]);
         // reader.onload = event => {
@@ -595,12 +599,17 @@
             // if(currentIndex === 4) {
             //     form.parent().parent().parent().append('<div class="footer" style="height:752px;"></div>');
             // }
+
             form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
+            if(!uploadComplete){
+                alert('Please wait for the upload to complete')
+            }
+            return form.valid() || uploadComplete;
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
             // if ($("#noEvents").val() == "2"){
+            console.log('hi')
             var noSelected = 0
 
             for (i = 0; i < prefs.length; i++) {
