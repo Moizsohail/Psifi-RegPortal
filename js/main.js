@@ -491,7 +491,9 @@
                 maxlength: 13
             },
             {
-                'member-photo':true,
+                'member-photo':{
+                    required:true,
+                },
             },
             'member-gender':{
                 required: true
