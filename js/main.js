@@ -613,7 +613,7 @@
                 $("#noEvents").focus()
                 return false
             }
-            
+            console.log('here')
             form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
