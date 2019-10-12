@@ -33,7 +33,7 @@
     $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
         uploadComplete = false;
-        $(this).next.next.html('Uploading')
+        $(this).next().next().html('Uploading')
         if(event.target.files.length === 0)
         {
             return;
@@ -56,7 +56,7 @@
             
             
         }
-        $(this).next.next.html('Done')
+        $(this).next().next().html('Done')
         uploadComplete = true;
         })
         // reader.readAsArrayBuffer(e.target.files[0]);
