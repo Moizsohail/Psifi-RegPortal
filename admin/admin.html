@@ -155,14 +155,7 @@
                       <th>Paid</th>
                       <th>Details</th>
                     </tr>
-                    <tr style="display: none" id="demo">
-                        <td name="teamID"></td>
-                        <td name="name"></td>
-                        <td name="email"></td>
-                        <td name="verified"></td>
-                        <td name="paid"></td>
-                        <td><a href="">More details</a></td>
-                    </tr>
+                    
                   </table>
                   <p id="paginationP">                  
                     <a href="#" class="previous round">&#8249;</a>
@@ -211,15 +204,25 @@
 
 </body>
     <script type="text/javascript">
-        function appendData(){
-
+        function appendData(arr){
+            for(var i =0; i <arr.length;i++){
+                `<tr>
+                    <td name="_id" style="display: none">`+arr[i]['_id']+`</td>
+                    <td name="teamID">`+arr[i]['teamID']+`</td>
+                    <td name="name">`+arr[i]['name']+`</td>
+                    <td name="email">`+arr[i]['email']+`</td>
+                    <td name="verified">`+arr[i]['verified']+`</td>
+                    <td name="paid">`+arr[i]['paid']+`</td>
+                    <td><a href="">More details</a></td>
+                </tr>`
+            }
         }
         var pageNumber = 1;
-        var data = [];
+        var content = [];
         $(document).on('click',".next",function(){
-            if(pageNumber < data.length){
+            if(pageNumber < content.length){
                 pageNumber += 1;
-
+                appendData(content.slice((pageNumber-1)*10,(pageNumber)*10))
                 $("#paginationP").html(`<a href="#" class="previous round">&#8249;</a>
                      Page `+pageNumber+`
                     <a href="#" class="next round">&#8250;</a>`)
@@ -228,9 +231,9 @@
 
         })
         $(document).on('click',".previous",function(){
-            if(pageNumber < data.length){
+            if(pageNumber < content.length){
                 pageNumber -= 1;
-
+                appendData(content.slice((pageNumber-1)*10,(pageNumber)*10))
                 $("#paginationP").html(`<a href="#" class="previous round">&#8249;</a>
                      Page `+pageNumber+`
                     <a href="#" class="next round">&#8250;</a>`)
@@ -266,7 +269,8 @@
                 success:function(data, textStatus, jqXHR) {
                     console.log(data['teams'])
                     if(data['status']==200){
-                        //window.location.href="portal.html?token="+ sessionStorage['token'];
+                        teams = data['teams'];
+                        
                     }
                     else{
                         alert(data['message'])
