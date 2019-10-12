@@ -595,6 +595,13 @@
             }
             if (currentIndex === 2) {
                 form.parent().parent().parent().find('.footer').removeClass('footer-1').addClass('footer-' + currentIndex + '');
+                fields = $('[name="member-photo"]')
+                for(var i = 1;i<fields.length;i++){
+                    if(fields == ""){
+                        return false;
+                    }
+                }
+                
             }
             if (currentIndex === 3) {
                 form.parent().parent().parent().find('.footer').removeClass('footer-2').addClass('footer-' + currentIndex + '');
