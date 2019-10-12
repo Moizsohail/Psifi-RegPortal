@@ -291,7 +291,7 @@
     appendCountryOptions('.country-option',);
     $(document).on("change","#applyingThrough",function(){
         if($(this).val()=="School" || $(this).val()=="University"){
-            togglePrivate("inst-advisor",true,true,"empty")
+            togglePrivate("inst-advisor",true,true,"false")
             togglePrivate("inst-name",true,false,"empty")
             togglePrivate("inst-email",true,false,"empty@empty.com")
             togglePrivate("inst-phone",true,false,"00000000000")
@@ -301,7 +301,7 @@
             //togglePrivate("inst-country",true,true,"empty")
         }
         else if($(this).val()=="Privately_Uni"|| $(this).val()=="Privately_Sch"){
-            togglePrivate("inst-advisor",false,true,"empty")
+            togglePrivate("inst-advisor",false,true,"false")
             togglePrivate("inst-name",false,false,"empty")
             togglePrivate("inst-email",false,false,"empty@empty.com")
             togglePrivate("inst-phone",false,false,"00000000000")
