@@ -238,7 +238,7 @@
             }}
             payload = JSON.stringify(payload)
             $.ajax({
-                url:"http://spades.lums.edu.pk/admin/search"+sessionStorage['token'],
+                url:"http://spades.lums.edu.pk/admin/search?token="+sessionStorage['token'],
                 type: "POST",
                 data: payload,
                 contentType: "application/json",
