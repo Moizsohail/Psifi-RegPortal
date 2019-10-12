@@ -10,7 +10,7 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
@@ -204,7 +204,7 @@
         <script type="text/javascript">
             args = window.location.search.substring(1).split('&')
             $.ajax({
-                url:"http://spades.lums.edu.pk/portal/data?token="+args[0],
+                url:"http://spades.lums.edu.pk/portal/data?"+args[0],
                 type: "POST",
                 data:args[1],
                 contentType: "application/json",
