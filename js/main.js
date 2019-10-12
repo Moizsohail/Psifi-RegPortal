@@ -490,10 +490,8 @@
                 minlength: 11,
                 maxlength: 13
             },
-            {
-                'member-photo':{
-                    required:true,
-                },
+            'member-photo':{
+                required:true,
             },
             'member-gender':{
                 required: true
