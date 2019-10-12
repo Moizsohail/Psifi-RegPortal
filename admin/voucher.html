@@ -200,18 +200,13 @@
 
         <!-- JS -->
         <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
-        <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
-        <script src="vendor/minimalist-picker/dobpicker.js"></script>
-        <script src="vendor/nouislider/nouislider.min.js"></script>
-        <script src="vendor/wnumb/wNumb.js"></script>
-        <script src="js/country.js"></script>
-        <script src="js/main.js"></script>
+        
         <script type="text/javascript">
+            args = window.location.search.substring(1).split('&')
             $.ajax({
-                url:"http://spades.lums.edu.pk/portal/data?token="+sessionStorage['token'],
+                url:"http://spades.lums.edu.pk/portal/data?token="+args[0],
                 type: "POST",
+                data:args[1],
                 contentType: "application/json",
                 dataType: 'json',
                 success:function(data, textStatus, jqXHR) {
