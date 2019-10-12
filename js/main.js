@@ -320,7 +320,7 @@
 
             $('#engrPref').append('<option></option>');
             $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
-            $('#engrPref').append('<option value="DrogoneWars">Drogone Wars</option>');
+            
         }
         else{
             $("#logicalPref").empty();
@@ -340,7 +340,7 @@
 
             $('#engrPref').append('<option></option>');
             $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
-            $('#engrPref').append('<option value="DrogoneWars">Drogone Wars</option>');
+            
             $('#engrPref').append('<option value="GearUp">Gear Up</option>');
             $('#engrPref').append('<option value="Seige">Seige</option>');
         }
