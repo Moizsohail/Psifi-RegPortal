@@ -164,9 +164,9 @@
                         <td><a href="">More details</a></td>
                     </tr>
                   </table>
-                  <p>                  
+                  <p id="paginationP">                  
                     <a href="#" class="previous round">&#8249;</a>
-                     Page 1 
+                     Page 1
                     <a href="#" class="next round">&#8250;</a>
                   </p>
                   <br>
@@ -211,6 +211,31 @@
 
 </body>
     <script type="text/javascript">
+        function appendData(){
+
+        }
+        var pageNumber = 1;
+        var data = [];
+        $(document).on('click',".next",function(){
+            if(pageNumber < data.length){
+                pageNumber += 1;
+
+                $("#paginationP").html(`<a href="#" class="previous round">&#8249;</a>
+                     Page `+pageNumber+`
+                    <a href="#" class="next round">&#8250;</a>`)
+            }
+
+
+        })
+        $(document).on('click',".previous",function(){
+            if(pageNumber < data.length){
+                pageNumber -= 1;
+
+                $("#paginationP").html(`<a href="#" class="previous round">&#8249;</a>
+                     Page `+pageNumber+`
+                    <a href="#" class="next round">&#8250;</a>`)
+            }
+        })
         $("#value2").hide()
         $(document).on('change',"#via",function(){
             if($(this).val() == "paid" || $(this).val() == "verified"){
