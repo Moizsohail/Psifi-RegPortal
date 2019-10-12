@@ -260,7 +260,7 @@
                     'value': $('[name=value]:visible').val()
                 }
             }
-            console.log(payload)
+            // console.log(payload)
             payload = JSON.stringify(payload)
             $.ajax({
                 url:"http://spades.lums.edu.pk/admin/search?token="+sessionStorage['token'],
@@ -269,7 +269,7 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success:function(data, textStatus, jqXHR) {
-                    console.log(data['teams'])
+                    // console.log(data['teams'])
                     if(data['status']==200){
                         teams = data['teams'];
                         appendData(teams.slice((pageNumber-1)*10,(pageNumber)*10));
