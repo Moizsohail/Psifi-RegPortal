@@ -232,10 +232,13 @@
         })
         $(document).on('click','#searchBtn',function(){
             $()
-            payload = {'search':{
-                'via': $("#id").val(),
-                'value': $('[name=value]:visible').val()
-            }}
+            payload = {
+                'search':{
+                    'via': $("#id").val(),
+                    'value': $('[name=value]:visible').val()
+                }
+            }
+            console.log(payload)
             payload = JSON.stringify(payload)
             $.ajax({
                 url:"http://spades.lums.edu.pk/admin/search?token="+sessionStorage['token'],
