@@ -198,15 +198,18 @@
                 <table>
                     <tr align="right">
                         <th><span>Number of Events:</span></th><td><span name="event-number"></span></td>
-                    </tr>
-                    <tr align="right">
                         <th><span>Logical Pref:</span></th><td><span name="event-logical"></span></td>
                         <th><span>Mystery Pref:</span></th><td><span name="event-mystery"></span></td>
-                        <th><span>Engineering Pref:</span></th><td><span name="event-engineering"></span></td>
                     </tr>
                     <tr align="right">
-                        <th><span>Explanation for choice:</span></th><td><span name="event-explain"></span></td>
+                        <th><span>Engineering Pref:</span></th><td><span name="event-engineering"></span></td>
+                        <th><span>Drogone?</span></th><td><span name="event-drogone"></span></td>
                     </tr>
+                    </table>
+                    <table align="right">
+                        <th><span>Explanation for choice:</span></th><td><span name="event-explain"></span></td>
+                    </table>
+                    <table>
                     <tr align="right">
                         <th><span>Referred by Campus Ambassador:</span></th><td><span name="event-CARefer"></span></td>
                         <th><span>CA Name:</span></th><td><span name="event-ambassadorName"></span></td>
@@ -247,6 +250,10 @@
                 date = new Date(ts);
                 return date.toDateString() + " - " + date.toTimeString()
             }
+            function fixDate(dt){
+                date = new Date(dt);
+                return date.toDateString()
+            }
             function printer(data){
                 
                 for (let i = 0; i < data['member'].length - 1 ; i++){
@@ -278,7 +285,7 @@
                             $(this).attr('src',data[sec_name][i][data_name])
                         }
                         if(data_name == "birthDate"){
-                            $(this).html(fixTimeStamp(data[sec_name][i][data_name]))
+                            $(this).html(fixDate(data[sec_name][i][data_name]))
                         }
                         else
                             $(this).html(data[sec_name][i][data_name])
