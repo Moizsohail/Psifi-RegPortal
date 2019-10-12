@@ -253,9 +253,7 @@
                     }
                     else if(sec_name == "member"){
 
-                        if(data_name == "phoneGaurdian"){
-                            i++;
-                        }
+
                         if(data_name == "photo"){
                             console.log('hi')
                             $(this).attr('src',data[sec_name][i][data_name])
@@ -265,6 +263,9 @@
                         }
                         else
                             $(this).html(data[sec_name][i][data_name])
+                        if(data_name == "phoneGaurdian"){
+                            i++;
+                        }
                     }
 
                     else{
