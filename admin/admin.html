@@ -205,9 +205,9 @@
 </body>
     <script type="text/javascript">
         function appendData(arr){
-            console.log(arr.length)
+            $('tbody tr td:first-child').parent().empty()
             for(var i =0; i <arr.length;i++){
-                $('tbody tr td:first-child').parent().empty()
+                
                 $('tbody').append(`<tr>
                     <td name="_id" style="display: none">`+arr[i]['_id']+`</td>
                     <td name="teamID">`+arr[i]['teamID']+`</td>
