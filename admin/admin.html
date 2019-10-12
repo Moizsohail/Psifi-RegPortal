@@ -272,7 +272,7 @@
                     console.log(data['teams'])
                     if(data['status']==200){
                         teams = data['teams'];
-                        appendData(content.slice((pageNumber-1)*10,(pageNumber)*10));
+                        appendData(teams.slice((pageNumber-1)*10,(pageNumber)*10));
                         
                     }
                     else{
