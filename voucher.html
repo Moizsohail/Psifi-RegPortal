@@ -253,7 +253,7 @@
                     newMemData = $('.initialTemplate').clone()
                     newMemData.removeAttr('id')
                     newMemData.removeClass('initialTemplate')
-                    newMemData.find('p:first-child').text('Member ' + (i +2))
+                    newMemData.find('h3:first-child').text('Member ' + (i +2))
                     newMemData.attr('id','member'+(i+2))
                     $('.initialTemplate').parent().append(newMemData)    
                 }
