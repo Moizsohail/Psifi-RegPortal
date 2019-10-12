@@ -606,8 +606,9 @@
             form.validate().settings.ignore = ":disabled,:hidden";
             if(!uploadComplete){
                 alert('Please wait for the upload to complete')
+                return false;
             }
-            return (form.valid() || uploadComplete);
+            return form.valid();
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
