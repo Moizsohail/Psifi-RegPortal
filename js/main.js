@@ -30,7 +30,7 @@
     }
     debugMode(true)
     var uploadComplete = true;         
-    $('[name=member-photo]').val('asdfasd')
+    // $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
         uploadComplete = false;
         $(this).next().next().html('Uploading')
