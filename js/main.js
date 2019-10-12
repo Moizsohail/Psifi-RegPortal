@@ -597,7 +597,7 @@
                 form.parent().parent().parent().find('.footer').removeClass('footer-1').addClass('footer-' + currentIndex + '');
                 fields = $('[name="member-photo"]')
                 for(var i = 1;i<fields.length;i++){
-                    if(fields == ""){
+                    if(fields[i].value == ""){
                         return false;
                     }
                 }
