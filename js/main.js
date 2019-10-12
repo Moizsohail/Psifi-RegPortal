@@ -600,6 +600,7 @@
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
+            console.log('here')
             // if ($("#noEvents").val() == "2"){
             var noSelected = 0
 
