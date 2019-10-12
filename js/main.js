@@ -28,7 +28,7 @@
         }
 
     }
-    debugMode(false)
+    debugMode(true)
     var uploadComplete = true;         
     // $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
@@ -632,6 +632,11 @@
                 return false
             }
 
+            if (!document.getElementById('event-explainid').checkValidity()){
+                alert("Please fill the events explanation field correctly.")
+                return false;
+            }
+            
             // added validation to HTML side
             //form.validate().settings.ignore = ":disabled";
             //console.log(form.valid())
