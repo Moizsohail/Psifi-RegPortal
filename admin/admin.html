@@ -173,8 +173,8 @@
                             <option value="email">Team Email</option>
                             <!-- <option value="instName">Institute Name</option> -->
                             <!-- <option value="memberFirstName">Member First Name</option> -->
-                            <option value="verified">Verified</option>
                             <option value="paid">Paid</option>
+                            <option value="verified">Verified</option>
                             <!-- <option value="showAll">Show All</option> -->
                         </select>
                     </div>
@@ -223,7 +223,7 @@
         var pageNumber = 1;
         var content = [];
         $(document).on('click',".next",function(){
-            if(pageNumber < content.length){
+            if(pageNumber < (content.length/10)){
                 pageNumber += 1;
                 appendData(content.slice((pageNumber-1)*10,(pageNumber)*10))
                 $("#paginationP").html(`<a href="#" class="previous round">&#8249;</a>
@@ -234,7 +234,7 @@
 
         })
         $(document).on('click',".previous",function(){
-            if(pageNumber < content.length){
+            if(pageNumber > 1){
                 pageNumber -= 1;
                 appendData(content.slice((pageNumber-1)*10,(pageNumber)*10))
                 $("#paginationP").html(`<a href="#" class="previous round">&#8249;</a>
@@ -273,8 +273,10 @@
                     // console.log(data['teams'])
                     if(data['status']==200){
                         teams = data['teams'];
+                        // for (var i = 0; i < 20; i++)
+                        //     teams.push({_id: "0",email:"lol@lol",name:"TEAMX"+i,paid:false,teamID:"PSI-S-19999",verified:false})
                         appendData(teams.slice((pageNumber-1)*10,(pageNumber)*10));
-                        
+                        content = teams;
                     }
                     else{
                         alert(data['message'])
