@@ -28,7 +28,7 @@
         }
 
     }
-    debugMode(false)
+    debugMode(true)
     var uploadComplete = true;         
     // $('[name=member-photo]').val('asdfasd')
     $(document).on('change','.fileButton',function(e){
@@ -203,6 +203,59 @@
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {alert("Unable to register. Please verify credentials and try again.");}
+        })
+    })
+    var fform = $('#forgotpass-form');
+    fform.validate({
+        errorPlacement: function errorPlacement(error, element) {
+            element.before(error);
+        },
+        rules: {
+            'forgotpass-email':{
+                required: true,
+                email: true
+            },
+        },
+        onfocusout: function(element) {
+            $(element).valid();
+        },
+
+        invalidHandler: function(form, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log(errors)
+            if (errors) {                    
+                validator.errorList[0].element.focus();
+            }
+        } 
+    });
+    $(document).on('click',"#forgotpassSubmit",function(){
+        //let payload = serialize('#signup-form')
+        let payload = {}
+        fform.validate();
+        if (!fform.valid()){
+            return false;
+        }
+        fform.serializeArray().forEach(function(a){
+            payload[a['name']]=a['value']
+        })
+        console.log(payload)
+        payload = JSON.stringify(payload)
+        $.ajax({
+            url:"http://spades.lums.edu.pk/api/forgotpass",
+            type: "POST",
+            data: payload,
+            contentType: "application/json",
+            dataType: 'json',
+            success:function(data, textStatus, jqXHR) {
+                console.log(data)
+                if(data['status']==200){
+                    window.location.href='success.html'
+                }
+                else {
+                    alert(data['message'])
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {alert("Invalid email.");}
         })
     })
     var lform = $('#login-form');
