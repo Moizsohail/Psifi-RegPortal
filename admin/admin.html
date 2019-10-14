@@ -154,6 +154,8 @@
                       <th>Verified</th>
                       <th>Paid</th>
                       <th>Details</th>
+                      <th>Mark Verified</th>
+                      <th>Mark Paid</th>
                     </tr>
                     
                   </table>
@@ -216,6 +218,8 @@
                     <td name="verified">`+arr[i]['verified']+`</td>
                     <td name="paid">`+arr[i]['paid']+`</td>
                     <td><a target="_blank" href="voucher.html?token=`+sessionStorage['token']+`&_id=`+arr[i]['_id']+`">More details</a></td>
+                    <td><button id ="paidBtn" type="submit"><i class="fa fa-money"></i></button></td>
+                    <td><button id ="verifiedBtn" type="submit"><i class="fa fa-check-circle-o"></i></button></td>
                 </tr>`)
                 
             }
@@ -254,6 +258,8 @@
             }
         })
         $(document).on('click','#searchBtn',function(){
+            for (var i = 0; i < 20; i++)
+                content.push({_id: "0",email:"lol@lol",name:"TEAMX"+i,paid:false,teamID:"PSI-S-19999",verified:false}) 
             $()
             payload = {
                 'search':{
