@@ -670,7 +670,7 @@
             return form.valid();
         },
         onFinishing: function(event, currentIndex) {
-            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
+            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref")]
 
             var noSelected = 0
 
