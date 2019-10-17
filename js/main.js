@@ -249,7 +249,7 @@
             success:function(data, textStatus, jqXHR) {
                 console.log(data)
                 if(data['status']==200){
-                    window.location.href='success.html'
+                    window.location.href='forgotpass-success.html'
                 }
                 else {
                     alert(data['message'])
