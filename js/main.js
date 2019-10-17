@@ -30,7 +30,7 @@
     }
     debugMode(false)
     var uploadComplete = true;         
-    // $('[name=member-photo]').val('asdfasd')
+
     $(document).on('change','.fileButton',function(e){
         uploadComplete = false;
         $(this).next().next().html('Uploading')
@@ -49,7 +49,7 @@
                 canvas.height = img.height
                 let ctx = canvas.getContext('2d')
                 ctx.drawImage(img,0,0);
-                var cimg    = canvas.toDataURL("image/jpeg",0.1);
+                var cimg = canvas.toDataURL("image/jpeg",0.1);
                 $(this).next().val(cimg);
                 // document.write('<img src="'+cimg+'"/>');
             }
@@ -58,29 +58,9 @@
         }
         $(this).next().next().html('Done')
         uploadComplete = true;
-        })
-        // reader.readAsArrayBuffer(e.target.files[0]);
-        // reader.onload = event => {
-        //     console.log(event)
-        //     const img = new Image();
-        //     img.src = event.target.result;
-        //     img.onload = () => {
-        //             const myCanvas = document.getElementById('my-canvas');
-                    
-        //             const ctx = myCanvas.getContext('2d');
-        //             // img.width and img.height will contain the original dimensions
-                    // ctx.drawImage(img,0,0);
-                    // ctx.canvas.toBlob((blob)=> {
-                    //     const file = new File([blob], e.target.files[0]['name'], {
-                    //         type: 'image/jpeg',
-                    //         lastModified: Date.now()
-                    //     });
-                    // }, 'image/jpeg', 0.7);
-        //         },
-        //         reader.onerror = error => console.log(error);
-    //};
+    });
 
-    // })
+        
     $(document).on('keypress','.wordCount',function(e){
         if($(this).val().length + 1> 150){
             e.preventDefault()
