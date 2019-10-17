@@ -335,7 +335,7 @@
                 $(this).next().next().html('Done')
                 memberID = $(this).prev().text();
                 teamID = $('span[name ="teamID"]').text();
-                payload = {'photo':$(this).next().val(), 'memberID':memberID,'teamID':teamID}
+                payload = {'photo':$(this).next().val(), 'memberID':memberID[memberID.length -1],'teamID':teamID}
                 console.log(payload)
                 payload = JSON.stringify(payload)
                 $.ajax({
