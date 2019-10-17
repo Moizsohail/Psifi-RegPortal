@@ -211,7 +211,7 @@
             element.before(error);
         },
         rules: {
-            'forgotpass-email':{
+            'email':{
                 required: true,
                 email: true
             },
