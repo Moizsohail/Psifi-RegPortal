@@ -241,7 +241,7 @@
         console.log(payload)
         payload = JSON.stringify(payload)
         $.ajax({
-            url:"http://spades.lums.edu.pk/api/forgotpass",
+            url:"http://spades.lums.edu.pk/api/forgotpassword",
             type: "POST",
             data: payload,
             contentType: "application/json",
