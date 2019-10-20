@@ -677,6 +677,10 @@
             return true;
         },
         onFinished: function(event, currentIndex) {
+            var finishBtn = $("a[href$='#finish']");
+            finishBtn.removeAttr("href");
+            finishBtn.attr("style", "color: lightcoral;");
+            
             let payload  = serialize('#portal-form')
             console.log(payload)
             console.log("http://spades.lums.edu.pk/portal/submit?token="+sessionStorage['token'])
@@ -692,8 +696,14 @@
                         window.location.href="voucher.html"
                         console.log(data)
                     }
+                    finishBtn.attr("href","#finish");
+                    finishBtn.removeAttr("style");
                 },
-                error: function(jqXHR, textStatus, errorThrown) {alert("failure");}
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert("failure");
+                    finishBtn.attr("href","#finish");
+                    finishBtn.removeAttr("style");
+                }
         })
         },
         onStepChanged: function(event, currentIndex, priorIndex) {
