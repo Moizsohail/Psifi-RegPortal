@@ -684,6 +684,7 @@
                         window.location.href="voucher.html"
                         console.log(data)
                     }
+                    alert(data['message'])
                     finishBtn.attr("href","#finish");
                     finishBtn.removeAttr("style");
                 },
