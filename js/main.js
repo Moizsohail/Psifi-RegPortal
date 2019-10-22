@@ -1,19 +1,5 @@
  (function($) {
-    // $(document).on("paste drop", '.wordCount', function (e) {
-    //   if(e.type=="drop"){
-    //     e.preventDefault()
-    //   }
-    //   else{
-    //     console.log(150-$(this).val().length)
-    //     if($(this).val().length > 150){
-    //         e.preventDefault()
-    //     }
-    //     else
-    //         $(this).val($(this).val()+e.originalEvent.clipboardData.getData('text').substring(0,150-$(this).val().length));
-    //   }
-    //   $(this).next().html($(this).val().length+'/150 words')
-    // });
-
+    
     var boolTabJumping = true;
     var _startIndex = 2;
     function debugMode(on){
@@ -62,10 +48,10 @@
 
         
     $(document).on('keypress','.wordCount',function(e){
-        if($(this).val().length + 1> 150){
+        if($(this).val().length + 1> 500){
             e.preventDefault()
         }
-        $(this).next().html($(this).val().length+1+'/150 words')
+        $(this).next().html($(this).val().length+1+'/500 words')
     })
     function parseString(x){
         return x;
@@ -562,7 +548,7 @@
             },
             'event-explain':{
                 required:true,
-                maxlength: 150
+                maxlength: 500
             },
             'event-CArefer':{
                 required: true
