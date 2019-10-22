@@ -28,7 +28,7 @@
         }
 
     }
-    debugMode(false)
+    debugMode(true)
     var uploadComplete = true;         
 
     $(document).on('change','.fileButton',function(e){
@@ -66,20 +66,6 @@
             e.preventDefault()
         }
         $(this).next().html($(this).val().length+1+'/150 words')
-    })
-    $(document).on('change','#noEvents',function(x){
-        switch($(this).val()){
-            case "2":
-                $("#logicalPref").prop('required',false);
-                $("#mysterPref").prop('required',false);
-                $("#engrPref").prop('required',false);
-            break;
-            case "3":
-                $("#logicalPref").prop('required',true);
-                $("#mysterPref").prop('required',true);
-                $("#engrPref").prop('required',true);
-            break;
-        }
     })
     function parseString(x){
         return x;
@@ -650,7 +636,7 @@
             return form.valid();
         },
         onFinishing: function(event, currentIndex) {
-            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref")]
+            var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
 
             var noSelected = 0
 
@@ -660,20 +646,22 @@
                 }
             }
             if (noSelected != parseInt($("#noEvents").val()) ){
-                alert("Please select " + parseInt($("#noEvents").val()) + " events.")
-                $("#noEvents").focus()
+                $("#errorMsg").html("Please select " + parseInt($("#noEvents").val()) + " events.");
+                $("#errorMsg").attr("style", "color: red; display: block;")
                 return false
             }
+            $("#errorMsg").attr("style", "color: red; display: none;")
+                
 
             if (!document.getElementById('event-explainid').checkValidity()){
-                alert("Please fill the events explanation field correctly.")
+                $("#errorMsg").html("Please fill the events explanation field correctly.");
+                $("#errorMsg").attr("style", "color: red; display: block;")
                 return false;
             }
+
+            $("#errorMsg").attr("style", "color: red; display: none;")
+                
             
-            // added validation to HTML side
-            //form.validate().settings.ignore = ":disabled";
-            //console.log(form.valid())
-            // return form.valid();
             return true;
         },
         onFinished: function(event, currentIndex) {
