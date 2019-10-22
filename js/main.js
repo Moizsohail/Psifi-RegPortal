@@ -28,7 +28,7 @@
         }
 
     }
-    debugMode(true)
+    debugMode(false)
     var uploadComplete = true;         
 
     $(document).on('change','.fileButton',function(e){
