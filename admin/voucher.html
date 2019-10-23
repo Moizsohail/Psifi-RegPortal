@@ -226,9 +226,6 @@
         <!-- JS -->
         <script src="jquery/jquery.min.js"></script>
         <script type="text/javascript">
-            $(window).on('unload',function(){
-              sessionStorage.removeItem('token');
-            });
             args = window.location.search.substring(1).split('&')
             
             payload = {'_id':args[1].substring(4)}

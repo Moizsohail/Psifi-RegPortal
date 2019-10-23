@@ -206,9 +206,6 @@
 
 </body>
     <script type="text/javascript">
-        $(window).on('unload',function(){
-          sessionStorage.removeItem('token');
-        });
         function appendData(arr){
             $('tbody tr td:first-child').parent().empty()
             for(var i =0; i <arr.length;i++){

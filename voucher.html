@@ -231,9 +231,6 @@
         <script src="js/country.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
-            $(window).on('unload',function(){
-              sessionStorage.removeItem('token');
-            });
             $.ajax({
                 url:"http://spades.lums.edu.pk/portal/data?token="+sessionStorage['token'],
                 type: "POST",
