@@ -1,5 +1,5 @@
  (function($) {
-    $(window).unload(function(){
+    $(window).on('unload',function(){
       sessionStorage.removeItem('token');
     });
     var boolTabJumping = true;
