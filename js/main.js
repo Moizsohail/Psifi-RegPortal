@@ -1,5 +1,7 @@
  (function($) {
-    
+    $(window).unload(function(){
+      sessionStorage.removeItem('token');
+    });
     var boolTabJumping = true;
     var _startIndex = 2;
     function debugMode(on){

@@ -107,6 +107,9 @@
         <script src="jquery/jquery.min.js"></script>
 </body>
 	<script type="text/javascript">
+        $(window).unload(function(){
+          sessionStorage.removeItem('token');
+        });
 		$(document).on('click',"#adminLoginSubmit",function(){
 	        let payload  = {}; 
 	        $('#admin-form-id').serializeArray().forEach(function(a){
