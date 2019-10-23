@@ -231,7 +231,7 @@
         <script src="js/country.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
-            $(window).unload(function(){
+            $(window).on('unload',function(){
               sessionStorage.removeItem('token');
             });
             $.ajax({

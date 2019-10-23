@@ -226,7 +226,7 @@
         <!-- JS -->
         <script src="jquery/jquery.min.js"></script>
         <script type="text/javascript">
-            $(window).unload(function(){
+            $(window).on('unload',function(){
               sessionStorage.removeItem('token');
             });
             args = window.location.search.substring(1).split('&')
