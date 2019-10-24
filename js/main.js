@@ -1,4 +1,19 @@
  (function($) {
+
+    /*issues
+        function for storing portal data
+        funciton for retrieving portal data
+        funciton for deleting portal data
+        portal -> submit-button 
+            if invalid token send to login page + store portal data
+            else if successful delete portal data from storage
+        button on portal page
+            restores portal data
+
+
+
+    */
+    
     var boolTabJumping = true;
     var _startIndex = 2;
     function debugMode(on){
@@ -13,6 +28,7 @@
         }
 
     }
+    
     debugMode(false)
     var uploadComplete = true;         
 
@@ -249,6 +265,7 @@
             success:function(data, textStatus, jqXHR) {
                 console.log(data)
                 if(data['status']==200){
+                    // sessionStorage.removeItem('token')
                     sessionStorage['token'] = data['token'];
                     window.location.href = "region.html"
                     //window.location.href="portal.html?token="+ sessionStorage['token'];
@@ -263,164 +280,12 @@
     // $(document).on('change','[name=member-firstName]',function(){
     //     $('#headDelegate')'<option>'+$(this).val()+'</option>'
     // })
-    function togglePrivate(name,show,select,dummy){
-        if(show && select){
-            $("[name="+name+"] option:first-child").html('')
-            $("[name="+name+"]").parent().show()
-            $("[name="+name+"]").parent().prev().show()
-        
-        }
-        else if(!show && select){
-            $("[name="+name+"] option:first-child").html(dummy)
-            // $("[name="+name+"] option:first-child").attr("selected")
-            $("[name="+name+"] option").removeAttr("selected")
-            $("[name="+name+"] option:first-child").attr("selected")
-            $("[name="+name+"]").parent().prev().hide()
-            $("[name="+name+"]").parent().hide()
-        
-        }
-        
-        else if(show){
-            $("[name="+name+"]").val('')
-            $("[name="+name+"]").parent().show()
-            $("[name="+name+"]").parent().prev().show()
-        }
-        else{
-            $("[name="+name+"]").val(dummy)
-            $("[name="+name+"]").parent().prev().hide()
-            $("[name="+name+"]").parent().hide()
-        }
-
-    }
-    appendCountryOptions('.country-option',);
-    $(document).on("change","#applyingThrough",function(){
-        if($(this).val()=="School" || $(this).val()=="University"){
-            togglePrivate("inst-advisor",true,true,"false")
-            togglePrivate("inst-name",true,false,"empty")
-            togglePrivate("inst-email",true,false,"empty@empty.com")
-            togglePrivate("inst-phone",true,false,"00000000000")
-            togglePrivate("inst-principalEmail",true,false,"empty@empty.com")
-            //togglePrivate("inst-address",true,false,"NNNNNNNNNNNNNNNNN")
-            //togglePrivate("inst-city",true,false,"empty")
-            //togglePrivate("inst-country",true,true,"empty")
-        }
-        else if($(this).val()=="Privately_Uni"|| $(this).val()=="Privately_Sch"){
-            togglePrivate("inst-advisor",false,true,"false")
-            togglePrivate("inst-name",false,false,"empty")
-            togglePrivate("inst-email",false,false,"empty@empty.com")
-            togglePrivate("inst-phone",false,false,"00000000000")
-            togglePrivate("inst-principalEmail",false,false,"empty@empty.com")
-            // togglePrivate("inst-address",false,false,"NNNNNNNNNNNNNNNNN")
-            // togglePrivate("inst-city",false,false,"empty")
-            // togglePrivate("inst-country",false,true,"empty")
-        }
-
-        if ($(this).val()=="University"||$(this).val()=="Privately_Uni"){ //must also limit events for UNI
-            $("#logicalPref").empty();
-            $("#mysterPref").empty();
-            $("#engrPref").empty();
-
-            $('#logicalPref').append('<option></option>');
-            $('#logicalPref').append('<option value="TechWars">Tech Wars</option>');
-
-            $('#mysterPref').append('<option></option>');
-            $('#mysterPref').append('<option value="Galactica">Galactica</option>');
-
-            $('#engrPref').append('<option></option>');
-            $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
-            
-        }
-        else{
-            $("#logicalPref").empty();
-            $("#mysterPref").empty();
-            $("#engrPref").empty();
-
-            $('#logicalPref').append('<option></option>');
-            $('#logicalPref').append('<option value="TechWars">Tech Wars</option>');
-            $('#logicalPref').append('<option value="ScifinityWars">Scifinity Wars</option>');
-            $('#logicalPref').append('<option value="MathGauge">Math Gauge</option>');
-            $('#logicalPref').append('<option value="TDM">Tour De Mind</option>');
-
-            $('#mysterPref').append('<option></option>');
-            $('#mysterPref').append('<option value="Galactica">Galactica</option>');
-            $('#mysterPref').append('<option value="SCB">Science Crime Busters</option>');
-            $('#mysterPref').append('<option value="DD">Diagnosis Dilemma</option>');
-
-            $('#engrPref').append('<option></option>');
-            $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
-            
-            $('#engrPref').append('<option value="GearUp">Gear Up</option>');
-            $('#engrPref').append('<option value="Seige">Seige</option>');
-        }
-    })
-    $(document).on("click","#event-CArefer",function(){
-        if($(this).val()==1){
-            togglePrivate("event-ambassadorName",true,true)
-            togglePrivate("event-ambassadorPhone",true,true)
-        }
-        else{
-            $("[name=event-ambassadorName]").parent().hide()
-            $("[name=event-ambassadorPhone]").parent().hide()
-        }
-    })
     
-    number_of_tabs = 0
-    function add_collapsible(){
-        $(this).toggleClass('active');
-        content = $(this).next();        
-        if(content.css('max-height')!="0px")
-            content.css('max-height',"0px")
-        else
-            content.css('max-height',content.prop('scrollHeight') + 'px')
-    }
-    $(document).on('click','#temp-part-header',add_collapsible)
-    function appendTab(){
-        if (number_of_tabs >= 5){
-            alert("Can't have more than 5 participants");
-            return false;
-        }
-        number_of_tabs++; //added a new member/tab
-        var participant_header = $('#temp-part-header').clone();
-        var participant_content = $('#temp-part-content').clone();
-        participant_header.toggleClass('active',false);
-        participant_content.css('max-height',null);
-        participant_header.css('display','flex');
-        participant_header.attr('id','');
-        participant_content.css('display','block');
-        participant_content.attr('id','');
-        $("#headDelegate-id").append('<option value="' +  number_of_tabs +'">Team Member '+ number_of_tabs +'</option>');
-        
-        
-        $('#part-group').append(participant_header);
-        $(document).on('click','.collapsible',add_collapsible)
-        
-        $('#part-group').append(participant_content);
-        return true;
-    }
-    function deleteTab(el){
-        if(number_of_tabs <= 3){
-            alert("Can't Be Less Than 3 Participants")
-            return false;
-        }
-        
-        if($(this).parent().attr('id')=='temp-part-header'){
-            console.log('hii');
-            $(this).parent().next().next().attr('id','temp-part-header')
-            $(this).parent().next().next().next().attr('id','temp-part-content')
-        }
-
-        console.log(number_of_tabs);
-        $("#headDelegate-id").find('[value="' + number_of_tabs + '"]').remove();
-        number_of_tabs--;
-
-        $(this).parent().next().remove()
-        $(this).parent().remove()
-    }
-    for(var i=0;i<3;i++){
-        appendTab();
-    }
-    $(document).on('click', '#add-participants', appendTab );
-    $(document).on('click', '.remove-button',deleteTab);
+    appendCountryOptions('.country-option',);
+    
+    
+    
+    
     var form = $("#portal-form");
     form.validate({
         errorPlacement: function errorPlacement(error, element) {
@@ -586,7 +451,7 @@
         titleTemplate: '<div class="title"><span class="step-number">#index#</span><span class="step-text">#title#</span></div>',
         labels: {
             previous: 'Previous',
-            next: 'Next',
+            next: 'Save And Next',
             finish: 'Finish',
             current: ''
         },
@@ -612,13 +477,16 @@
             if (currentIndex === 3) {
                 form.parent().parent().parent().find('.footer').removeClass('footer-2').addClass('footer-' + currentIndex + '');
             }
-
+            // store();
             form.validate().settings.ignore = ":disabled,:hidden";
             if(!uploadComplete){
                 alert('Please wait for the upload to complete')
                 return false;
             }
-            return form.valid();
+            booll = form.valid()
+            if (booll) store()
+            return booll;
+            
         },
         onFinishing: function(event, currentIndex) {
             var prefs = [$("#logicalPref"),$("#mysterPref"),$("#engrPref"),$("#drogPref")]
@@ -652,7 +520,7 @@
         onFinished: function(event, currentIndex) {
             var finishBtn = $("a[href$='#finish']");
             finishBtn.removeAttr("href");
-            finishBtn.attr("style", "color: lightcoral;");
+            finishBtn.attr("style", "background-color: #999 !important;");
             
             let payload  = serialize('#portal-form')
             console.log(payload)
@@ -669,7 +537,11 @@
                         window.location.href="voucher.html"
                         console.log(data)
                     }
+
                     alert(data['message'])
+                    if(data['message']=="Invalid Token!"){
+                        window.location.href = "login.html"
+                    }
                     finishBtn.attr("href","#finish");
                     finishBtn.removeAttr("style");
                 },

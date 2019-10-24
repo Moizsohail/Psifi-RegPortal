@@ -15,6 +15,41 @@
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
+        .store-btn{
+            margin-right: 10px;
+        }
+        .store-btn:hover{
+            background-color: #ADD8E6;
+        }
+        .reset-btn{
+            background-color: #e8e8e8 !important;
+            color:#999 !important; 
+        }
+        .cbtn{
+            width:140px;
+            height: 50px;
+            color: #ffff;
+            background: #4966b1;
+            -webkit-align-items:center;
+            -moz-align-items:center;
+            align-items:center;
+            -o-align-items:center;
+            -ms-align-items:center;
+            justify-content:center;
+            -moz-justify-content:center;
+            -webkit-justify-content:center;
+            -o-justify-content:center;
+            -ms-justify-content:center;
+            text-decoration:center;
+            cursor:pointer;
+            display:flex;
+            display:-webkit-flex;
+            text-decoration-line: none;
+        }
+        a[href="#next"]:hover,a[href="#next"]:focus,a[href="#finish"]:hover,a[href="#finish"]:focus{
+            background-color: #ADD8E6;
+            color: black;
+        }
         input[type=checkbox]{
             padding: 0px !important;
             
@@ -157,6 +192,10 @@
                                 <label for="mysterPref" name="mysterPref" class="text-input">Country *</label>
                             </div>
                             <p style="font-size:12px; color: gray">Please rest assured the site is completely secure - all your data is encrypted by us on submission for credentials and registrations. We do not require any payment information either.</p>
+                            <div style="display: flex">
+                                <a class="cbtn store-btn" >Save</a>
+                                <a class="cbtn reset-btn" >Reset</a>
+                            </div>
 
                     </fieldset>
                     
@@ -265,11 +304,17 @@
                                                 <input  type="text" style="display: none" name="member-photo">
                                                 <span class="text-input"></span>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
-
+    
                             </div>
+
+                        </div>
+                        <div style="display: inline-flex;margin-bottom: 20px">
+                            <a class="cbtn store-btn" >Save</a>
+                            <a class="cbtn reset-btn" >Reset</a>
                         </div>
                     </fieldset>
 
@@ -355,6 +400,10 @@
                             <input type="text"value="1234567891234" name="event-ambassadorPhone" minlength="11" maxlength="13"/>
                         </div>
                         <label class="form-label" style="color: red; display: none;" id="errorMsg">ErrorMessage</label>
+                        <div style="display: inline-flex;margin-bottom: 20px">
+                            <a class="cbtn store-btn" >Save</a>
+                            <a class="cbtn reset-btn" >Reset</a>
+                        </div>
                     </fieldset>
                     </div>
             </form>
@@ -364,6 +413,162 @@
 
         <!-- JS -->
         <script src="vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            function togglePrivate(name,show,select,dummy){
+                if(show && select){
+                    $("[name="+name+"] option:first-child").html('')
+                    $("[name="+name+"]").parent().show()
+                    $("[name="+name+"]").parent().prev().show()
+                
+                }
+                else if(!show && select){
+                    $("[name="+name+"] option:first-child").html(dummy)
+                    // $("[name="+name+"] option:first-child").attr("selected")
+                    $("[name="+name+"] option").removeAttr("selected")
+                    $("[name="+name+"] option:first-child").attr("selected")
+                    $("[name="+name+"]").parent().prev().hide()
+                    $("[name="+name+"]").parent().hide()
+                
+                }
+                
+                else if(show){
+                    $("[name="+name+"]").val('')
+                    $("[name="+name+"]").parent().show()
+                    $("[name="+name+"]").parent().prev().show()
+                }
+                else{
+                    $("[name="+name+"]").val(dummy)
+                    $("[name="+name+"]").parent().prev().hide()
+                    $("[name="+name+"]").parent().hide()
+                }
+
+            }
+            number_of_tabs = 0
+            function add_collapsible(){
+                $(this).toggleClass('active');
+                content = $(this).next();        
+                if(content.css('max-height')!="0px")
+                    content.css('max-height',"0px")
+                else
+                    content.css('max-height',content.prop('scrollHeight') + 'px')
+            }
+            $(document).on('click','#temp-part-header',add_collapsible)
+            function appendTab(){
+                if (number_of_tabs >= 5){
+                    alert("Can't have more than 5 participants");
+                    return false;
+                }
+                number_of_tabs++; //added a new member/tab
+                var participant_header = $('#temp-part-header').clone();
+                var participant_content = $('#temp-part-content').clone();
+                participant_header.toggleClass('active',false);
+                participant_content.css('max-height',null);
+                participant_header.css('display','flex');
+                participant_header.attr('id','');
+                participant_content.css('display','block');
+                participant_content.attr('id','');
+                $("#headDelegate-id").append('<option value="' +  number_of_tabs +'">Team Member '+ number_of_tabs +'</option>');
+                
+                
+                $('#part-group').append(participant_header);
+                $(document).on('click','.collapsible',add_collapsible)
+                
+                $('#part-group').append(participant_content);
+                return true;
+            }
+            function deleteTab(el){
+                if(number_of_tabs <= 3){
+                    alert("Can't Be Less Than 3 Participants")
+                    return false;
+                }
+                
+                if($(this).parent().attr('id')=='temp-part-header'){
+                    console.log('hii');
+                    $(this).parent().next().next().attr('id','temp-part-header')
+                    $(this).parent().next().next().next().attr('id','temp-part-content')
+                }
+
+                console.log(number_of_tabs);
+                $("#headDelegate-id").find('[value="' + number_of_tabs + '"]').remove();
+                number_of_tabs--;
+
+                $(this).parent().next().remove()
+                $(this).parent().remove()
+            }
+            function applyingThrough(e,obj="#applyingThrough"){
+                if($(obj).val()=="School" || $(obj).val()=="University"){
+                    togglePrivate("inst-advisor",true,true,"false")
+                    togglePrivate("inst-name",true,false,"empty")
+                    togglePrivate("inst-email",true,false,"empty@empty.com")
+                    togglePrivate("inst-phone",true,false,"00000000000")
+                    togglePrivate("inst-principalEmail",true,false,"empty@empty.com")
+                    //togglePrivate("inst-address",true,false,"NNNNNNNNNNNNNNNNN")
+                    //togglePrivate("inst-city",true,false,"empty")
+                    //togglePrivate("inst-country",true,true,"empty")
+                }
+                else if($(obj).val()=="Privately_Uni"|| $(obj).val()=="Privately_Sch"){
+                    togglePrivate("inst-advisor",false,true,"false")
+                    togglePrivate("inst-name",false,false,"empty")
+                    togglePrivate("inst-email",false,false,"empty@empty.com")
+                    togglePrivate("inst-phone",false,false,"00000000000")
+                    togglePrivate("inst-principalEmail",false,false,"empty@empty.com")
+                    // togglePrivate("inst-address",false,false,"NNNNNNNNNNNNNNNNN")
+                    // togglePrivate("inst-city",false,false,"empty")
+                    // togglePrivate("inst-country",false,true,"empty")
+                }
+
+                if ($(obj).val()=="University"||$(obj).val()=="Privately_Uni"){ //must also limit events for UNI
+                    $("#logicalPref").empty();
+                    $("#mysterPref").empty();
+                    $("#engrPref").empty();
+
+                    $('#logicalPref').append('<option></option>');
+                    $('#logicalPref').append('<option value="TechWars">Tech Wars</option>');
+
+                    $('#mysterPref').append('<option></option>');
+                    $('#mysterPref').append('<option value="Galactica">Galactica</option>');
+
+                    $('#engrPref').append('<option></option>');
+                    $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
+                    
+                }
+                else{
+                    $("#logicalPref").empty();
+                    $("#mysterPref").empty();
+                    $("#engrPref").empty();
+
+                    $('#logicalPref').append('<option></option>');
+                    $('#logicalPref').append('<option value="TechWars">Tech Wars</option>');
+                    $('#logicalPref').append('<option value="ScifinityWars">Scifinity Wars</option>');
+                    $('#logicalPref').append('<option value="MathGauge">Math Gauge</option>');
+                    $('#logicalPref').append('<option value="TDM">Tour De Mind</option>');
+
+                    $('#mysterPref').append('<option></option>');
+                    $('#mysterPref').append('<option value="Galactica">Galactica</option>');
+                    $('#mysterPref').append('<option value="SCB">Science Crime Busters</option>');
+                    $('#mysterPref').append('<option value="DD">Diagnosis Dilemma</option>');
+
+                    $('#engrPref').append('<option></option>');
+                    $('#engrPref').append('<option value="RoboWars">Robo Wars</option>');
+                    
+                    $('#engrPref').append('<option value="GearUp">Gear Up</option>');
+                    $('#engrPref').append('<option value="Seige">Seige</option>');
+                }
+            }
+
+            $(document).on("change","#applyingThrough",applyingThrough)
+            $(document).on("click","#event-CArefer",function(){
+                if($(this).val()==1){
+                    togglePrivate("event-ambassadorName",true,true)
+                    togglePrivate("event-ambassadorPhone",true,true)
+                }
+                else{
+                    $("[name=event-ambassadorName]").parent().hide()
+                    $("[name=event-ambassadorPhone]").parent().hide()
+                }
+            })
+        </script>
+        
         <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
         <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
         <script src="vendor/jquery-steps/jquery.steps.min.js"></script>
@@ -371,7 +576,21 @@
         <script src="vendor/nouislider/nouislider.min.js"></script>
         <script src="vendor/wnumb/wNumb.js"></script>
         <script src="js/country.js"></script>
+        <script src="js/customsavy.js"></script>
         <script src="js/main.js"></script>
+        
+        <script type="text/javascript">
+            for (var i=0;i<3;i++){
+                appendTab();
+            }
+            $(document).on('click', '#add-participants', appendTab );
+            $(document).on('click', '.remove-button',deleteTab);
+            retrieve();
+
+            // $(document).on('click','[href="#next"]',function(){
+            //     store();
+            // })
+        </script>
 </body>
 
 </html>
