@@ -218,12 +218,38 @@
                     <td name="verified">`+arr[i]['verified']+`</td>
                     <td name="paid">`+arr[i]['paid']+`</td>
                     <td><a target="_blank" href="voucher.html?token=`+sessionStorage['token']+`&_id=`+arr[i]['_id']+`">More details</a></td>
-                    <td><button id ="paidBtn" type="submit"><i class="fa fa-money"></i></button></td>
+                    <td><button class="paidBtn" id ="paidBtn" type="submit"><i class="fa"></i></button></td>
                     <td><button id ="verifiedBtn" type="submit"><i class="fa fa-check-circle-o"></i></button></td>
                 </tr>`)
                 
             }
         }
+        $(document).on('click','.paidBtn',function(){
+            
+            $(this).parent().parent().children(':first-child').text()
+            console.log('hi')
+            payload = {
+                'body':{
+                    '_id': $(this).parent().parent().children(':first-child').text(),
+                }
+            }
+            // console.log(payload)
+            payload = JSON.stringify(payload)
+            $.ajax({
+                url:"http://spades.lums.edu.pk/admin/togglePaid?token="+sessionStorage['token'],
+                type: "POST",
+                data: payload,
+                contentType: "application/json",
+                dataType: 'json',
+                success:function(data, textStatus, jqXHR) {
+                    console.log('success')
+                    console.log(textStatus)
+                    console.log(data)
+                    $(this).children()[0].classList.toggle('fa-money')
+                },
+                error: function(jqXHR, textStatus, errorThrown) {alert(textStatus);}
+                })    
+        })
         var pageNumber = 1;
         var content = [];
         $(document).on('click',".next",function(){
