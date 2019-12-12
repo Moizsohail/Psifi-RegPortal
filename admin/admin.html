@@ -154,8 +154,8 @@
                       <th>Verified</th>
                       <th>Paid</th>
                       <th>Details</th>
-                      <th>Mark Paid</th>
-                      <th>Mark Verified</th>
+                      <th>Mark As Paid</th>
+                      <th>Mark As Verified</th>
                     </tr>
                     
                   </table>
@@ -209,7 +209,14 @@
         function appendData(arr){
             $('tbody tr td:first-child').parent().empty()
             for(var i =0; i <arr.length;i++){
-                
+                let verified_icon = "";
+                let paid_icon = "";
+                if(arr[i]['verified']==true){
+                    verified_icon = "fa-check-circle"
+                }
+                if(arr[i]['paid']==true){
+                    paid_icon = "fa-money"
+                }
                 $('tbody').append(`<tr>
                     <td name="_id" style="display: none">`+arr[i]['_id']+`</td>
                     <td name="teamID">`+arr[i]['teamID']+`</td>
@@ -218,22 +225,19 @@
                     <td name="verified">`+arr[i]['verified']+`</td>
                     <td name="paid">`+arr[i]['paid']+`</td>
                     <td><a target="_blank" href="voucher.html?token=`+sessionStorage['token']+`&_id=`+arr[i]['_id']+`">More details</a></td>
-                    <td><button class="paidBtn" id ="paidBtn" type="submit"><i class="fa"></i></button></td>
-                    <td><button id ="verifiedBtn" type="submit"><i class="fa fa-check-circle-o"></i></button></td>
+                    <td><button class="paidBtn" id ="paidBtn" type="submit"><i class="fa` + paid_icon + `"></i></button></td>
+                    <td><button class="verifiedBtn" id ="verifiedBtn" type="submit"><i class="fa ` + verified_icon + `"></i></button></td>
                 </tr>`)
                 
             }
         }
         $(document).on('click','.paidBtn',function(){
-            
-            $(this).parent().parent().children(':first-child').text()
-            console.log('hi')
+            let obj = $(this)
+            let id = $(this).parent().parent().children(':first-child').text()
+            console.log($(this).parent().parent().children(':first-child').text())
             payload = {
-                'body':{
-                    '_id': $(this).parent().parent().children(':first-child').text(),
-                }
+                '_id': id
             }
-            // console.log(payload)
             payload = JSON.stringify(payload)
             $.ajax({
                 url:"http://spades.lums.edu.pk/admin/togglePaid?token="+sessionStorage['token'],
@@ -245,7 +249,44 @@
                     console.log('success')
                     console.log(textStatus)
                     console.log(data)
-                    $(this).children()[0].classList.toggle('fa-money')
+                    console.log(obj)
+                    if(data.status==200)
+                            obj.children()[0].classList.toggle('fa-money')
+                        if(obj.parent().parent().children(':nth-child(6)').text()=='true')
+                            obj.parent().parent().children(':nth-child(6)').text('false')
+                        if(obj.parent().parent().children(':nth-child(6)').text()=='false')
+                            obj.parent().parent().children(':nth-child(6)').text('true')
+                },
+                error: function(jqXHR, textStatus, errorThrown) {alert(textStatus);}
+                })    
+        })
+        $(document).on('click','.verifiedBtn',function(){
+            let obj = $(this)
+            let id = $(this).parent().parent().children(':first-child').text()
+            $(this).parent().parent().children(':first-child').text()
+            console.log('hi')
+            payload = {
+                '_id': $(this).parent().parent().children(':first-child').text(),
+            }
+            // console.log(payload)
+            payload = JSON.stringify(payload)
+            $.ajax({
+                url:"http://spades.lums.edu.pk/admin/toggleVerify?token="+sessionStorage['token'],
+                type: "POST",
+                data: payload,
+                contentType: "application/json",
+                dataType: 'json',
+                success:function(data, textStatus, jqXHR) {
+                    console.log('success')
+                    console.log(textStatus)
+                    console.log(data)
+                    if(data.status==200){
+                        obj.children()[0].classList.toggle('fa-check-circle')
+                        if(obj.parent().parent().children(':nth-child(5)').text()=='true')
+                            obj.parent().parent().children(':nth-child(5)').text('false')
+                        if(obj.parent().parent().children(':nth-child(5)').text()=='false')
+                            obj.parent().parent().children(':nth-child(5)').text('true')
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert(textStatus);}
                 })    
