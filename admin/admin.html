@@ -151,11 +151,11 @@
                       <th>Team ID</th>
                       <th>Team Name</th>
                       <th>Email</th>
-                      <th>Verified</th>
+                      <th>Selected</th>
                       <th>Paid</th>
                       <th>Details</th>
                       <th>Mark As Paid</th>
-                      <th>Mark As Verified</th>
+                      <th>Mark As Selected</th>
                     </tr>
                     
                   </table>
@@ -176,7 +176,7 @@
                             <!-- <option value="instName">Institute Name</option> -->
                             <!-- <option value="memberFirstName">Member First Name</option> -->
                             <option value="paid">Paid</option>
-                            <option value="verified">Verified</option>
+                            <option value="verified">Selected</option>
                             <!-- <option value="showAll">Show All</option> -->
                         </select>
                     </div>
@@ -209,14 +209,6 @@
         function appendData(arr){
             $('tbody tr td:first-child').parent().empty()
             for(var i =0; i <arr.length;i++){
-                let verified_icon = "";
-                let paid_icon = "";
-                if(arr[i]['verified']==true){
-                    verified_icon = "fa-check-circle"
-                }
-                if(arr[i]['paid']==true){
-                    paid_icon = "fa-money"
-                }
                 $('tbody').append(`<tr>
                     <td name="_id" style="display: none">`+arr[i]['_id']+`</td>
                     <td name="teamID">`+arr[i]['teamID']+`</td>
@@ -225,8 +217,8 @@
                     <td name="verified">`+arr[i]['verified']+`</td>
                     <td name="paid">`+arr[i]['paid']+`</td>
                     <td><a target="_blank" href="voucher.html?token=`+sessionStorage['token']+`&_id=`+arr[i]['_id']+`">More details</a></td>
-                    <td><button class="paidBtn" id ="paidBtn" type="submit"><i class="fa` + paid_icon + `"></i></button></td>
-                    <td><button class="verifiedBtn" id ="verifiedBtn" type="submit"><i class="fa ` + verified_icon + `"></i></button></td>
+                    <td><button class="paidBtn" id ="paidBtn" type="submit"><i class="fa fa-money"></i></button></td>
+                    <td><button class="verifiedBtn" id ="verifiedBtn" type="submit"><i class="fa fa-check-circle"></i></button></td>
                 </tr>`)
                 
             }
@@ -234,7 +226,10 @@
         $(document).on('click','.paidBtn',function(){
             let obj = $(this)
             let id = $(this).parent().parent().children(':first-child').text()
-            console.log($(this).parent().parent().children(':first-child').text())
+            // console.log($(this).parent().parent().children(':first-child').text())
+            if (!confirm("Are you sure you want to mark/unmark this team as paid?")) {
+                return;
+            }
             payload = {
                 '_id': id
             }
@@ -246,16 +241,18 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success:function(data, textStatus, jqXHR) {
-                    console.log('success')
                     console.log(textStatus)
-                    console.log(data)
-                    console.log(obj)
-                    if(data.status==200)
-                            obj.children()[0].classList.toggle('fa-money')
+                    // console.log(data)
+                    // console.log(obj)
+                    if(data.status==200){
                         if(obj.parent().parent().children(':nth-child(6)').text()=='true')
                             obj.parent().parent().children(':nth-child(6)').text('false')
-                        if(obj.parent().parent().children(':nth-child(6)').text()=='false')
+                        else
                             obj.parent().parent().children(':nth-child(6)').text('true')
+                    }
+                    else{
+                        alert(data.message)
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert(textStatus);}
                 })    
@@ -264,10 +261,13 @@
             let obj = $(this)
             let id = $(this).parent().parent().children(':first-child').text()
             $(this).parent().parent().children(':first-child').text()
-            console.log('hi')
+            if (!confirm("Are you sure you want to mark/unmark this team as selected?")) {
+                return;
+            }
             payload = {
                 '_id': $(this).parent().parent().children(':first-child').text(),
             }
+
             // console.log(payload)
             payload = JSON.stringify(payload)
             $.ajax({
@@ -277,15 +277,17 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success:function(data, textStatus, jqXHR) {
-                    console.log('success')
+                    // console.log('success')
                     console.log(textStatus)
                     console.log(data)
                     if(data.status==200){
-                        obj.children()[0].classList.toggle('fa-check-circle')
                         if(obj.parent().parent().children(':nth-child(5)').text()=='true')
                             obj.parent().parent().children(':nth-child(5)').text('false')
-                        if(obj.parent().parent().children(':nth-child(5)').text()=='false')
+                        else
                             obj.parent().parent().children(':nth-child(5)').text('true')
+                    }
+                    else{
+                        alert(data.message)
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {alert(textStatus);}
