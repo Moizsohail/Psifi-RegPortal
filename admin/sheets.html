@@ -126,21 +126,7 @@
                 }
             })
             downloadUrl+= "&token="+ sessionStorage['token']
-            console.log(downloadUrl)
-            $.ajax({
-	            url:downloadUrl,
-	            type: "POST",
-	            success:function(data, textStatus, jqXHR) {
-	                console.log(data)
-	                if(data['status']==200){
-	                    sessionStorage['token'] = data['token'];
-	                }
-	                else{
-	                    alert(data['message'])
-	                }
-	            },
-	            error: function(jqXHR, textStatus, errorThrown) {alert("Unable to download. Please try again.\n"+errorThrown+" \n " + textStatus);}
-        })
+            window.open(downloadUrl, '_blank');
     })  
 	</script>
 </html>
