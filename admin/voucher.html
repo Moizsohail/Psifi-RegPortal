@@ -220,6 +220,65 @@
                     </tr>
                 </table>
             </fieldset>
+            <fieldset>
+                <div class="collapsible" id="temp-part-header">
+                    <div>Event Allotments</div>
+                </div>
+                <table>
+                    <tr align="right">
+                        <th><span>Number of Events:</span></th><td>
+                            <div class="form-option-group">
+                            <select id="eventNumber" name="event-numberallot" >
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                            </select>
+                            </div>
+                        </td>
+                        <th><span>Logical Pref:</span></th><td>
+                            <div class="form-option-group">
+                            <select  id="logicalPref" name="event-logicalallot">
+                                <option value="" selected> </option>
+                                <option value="TechWars">Tech Wars</option>
+                                <option value="ScifinityWars">Scifinity Wars</option>
+                                <option value="MathGauge">Math Gauge</option>
+                                <option value="TDM">Tour De Mind</option>                                    
+                            </select>
+                            </div>
+                        </td>
+                        <th><span>Mystery Pref:</span></th><td>
+                            <div class="form-option-group">
+                            <select  id="mysterPref" name="event-mysteryallot">
+                                <option value="" selected> </option>
+                                <option value="SCB">Science Crime Busters</option>
+                                <option value="Galactica">Galactica</option>
+                                <option value="DD">Diagnosis Dilemma</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr align="right">
+                        <th><span>Engineering Pref:</span></th><td>
+                            <div class="form-option-group">
+                            <select  id="engrPref" name="event-engineeringallot">
+                                    <option value="" selected> </option>
+                                    <option value="Seige">Seige</option>
+                                    <option value="GearUp">Gear Up</option>
+                                    <option value="RoboWars">Robo Wars</option>
+                            </select>
+                            </div>
+                        </td>
+                        <th><span>Drogone?</span></th><td>
+                            <div class="form-option-group">
+                            <select id="drogPref" name="event-drogoneallot" >
+                                <option value="" selected> </option>
+                                <option value="Drogone">Yes</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick="saveAllots()" class="allotBtn">Save Allotments</button> 
+            </fieldset>
             <br><br>
     </div>
 
@@ -254,7 +313,7 @@
                 return date.toDateString()
             }
             function printer(data){
-                
+                console.log(data)
                 for (let i = 0; i < data['member'].length - 1 ; i++){
                     newMemData = $('.initialTemplate').clone()
                     newMemData.removeAttr('id')
@@ -273,14 +332,10 @@
                         }
                         else{
                             $(this).html(data[sec_name])    
-                        }
-                        
+                        }   
                     }
                     else if(sec_name == "member"){
-
-
-                        if(data_name == "photo"){
-                            
+                        if(data_name == "photo"){                            
                             $(this).attr('src',data[sec_name][i][data_name])
                         }
                         if(data_name == "birthDate"){
@@ -308,8 +363,17 @@
                         else
                             $(this).html(data[sec_name][data_name])
                     }
+
+                    // if(sec_name == "event"){
+                    //     $('input[name ="'+sec_name+'-'+data_name+'allot"]').val(data[sec_name][data_name])
+                    // }
                 })
             }
+            
+            function saveAllots(){
+                console.log("Saving allotments")
+            }
+
             $(document).on('change','.changefileButton',function(e){
                 uploadComplete = false;
                 $(this).next().next().html('Uploading')
