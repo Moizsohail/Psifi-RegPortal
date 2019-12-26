@@ -403,8 +403,7 @@
                     success:function(data, textStatus, jqXHR) {
                         console.log(data)
                         if(data['status']==200){
-                            sessionStorage['token'] = data['token'];
-                            window.location.href = "region.html"
+                            alert("Data Updated. Please refresh")
                             //window.location.href="portal.html?token="+ sessionStorage['token'];
                         }
                         else{
@@ -452,8 +451,9 @@
                     success:function(data, textStatus, jqXHR) {
                         console.log(data)
                         if(data['status']==200){
-                            sessionStorage['token'] = data['token'];
-                            window.location.href = "region.html"
+                            alert('SUCCESS')
+                            //sessionStorage['token'] = data['token'];
+                            //window.location.href = "region.html"
                             //window.location.href="portal.html?token="+ sessionStorage['token'];
                         }
                         else{
