@@ -372,6 +372,47 @@
             
             function saveAllots(){
                 console.log("Saving allotments")
+                args = window.location.search.substring(1).split('&')
+
+            
+                eventNumber = $('#eventNumber')
+                logP = $('#logicalPref')
+                mysP = $('#mysterPref')
+                engP = $('#engrPref')
+                droP = $('#drogPref')
+                data = [logP.val(),mysP.val(),engP.val(),droP.val()].filter(x=>x!="")
+                if (data.length != eventNumber.val()){
+                    return alert("Please select the correct number of fields")
+                }
+                payload = {
+                    '_id':args[1].substring(4),
+                    'number':data.length,
+                    'logical':logP.val(),
+                    'mystery':mysP.val(),
+                    'engineering':engrPref.val(),
+                    'drogone':droP.val()
+                }
+                console.log(payload)
+                payload = JSON.stringify(payload)
+                $.ajax({
+                    url:"http://spades.lums.edu.pk/admin/allotEvents?token="+sessionStorage['token'],
+                    type: "POST",
+                    data: payload,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success:function(data, textStatus, jqXHR) {
+                        console.log(data)
+                        if(data['status']==200){
+                            sessionStorage['token'] = data['token'];
+                            window.location.href = "region.html"
+                            //window.location.href="portal.html?token="+ sessionStorage['token'];
+                        }
+                        else{
+                            alert(data['message'])
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {alert("Failure.");}
+                })
             }
 
             $(document).on('change','.changefileButton',function(e){
