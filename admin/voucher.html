@@ -373,8 +373,6 @@
             function saveAllots(){
                 console.log("Saving allotments")
                 args = window.location.search.substring(1).split('&')
-
-            
                 eventNumber = $('#eventNumber')
                 logP = $('#logicalPref')
                 mysP = $('#mysterPref')
@@ -404,6 +402,7 @@
                         console.log(data)
                         if(data['status']==200){
                             alert("Data Updated. Please refresh")
+                            window.location.href=""
                             //window.location.href="portal.html?token="+ sessionStorage['token'];
                         }
                         else{
@@ -452,6 +451,7 @@
                         console.log(data)
                         if(data['status']==200){
                             alert('SUCCESS')
+                            window.location.href=""
                             //sessionStorage['token'] = data['token'];
                             //window.location.href = "region.html"
                             //window.location.href="portal.html?token="+ sessionStorage['token'];
