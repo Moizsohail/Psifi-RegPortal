@@ -124,7 +124,7 @@
 	                console.log(data)
 	                if(data['status']==200){
                         sessionStorage['token'] = data['token'];
-                        window.location.href="voucherQR.html?token="+ sessionStorage['token'];
+                        window.location.href="http://spades.lums.edu.pk/portal/voucher.html?token="+ sessionStorage['token'];
 	                }
 	                else{
 	                    alert(data['message'])
