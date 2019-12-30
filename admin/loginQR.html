@@ -115,7 +115,7 @@
 	        console.log(payload)
 	        payload = JSON.stringify(payload)
 	        $.ajax({
-	            url:"http://spades.lums.edu.pk/admin/loginQR/submit",
+	            url:"http://spades.lums.edu.pk/admin/loginQR/submit" + window.location.search,
 	            type: "POST",
 	            data: payload,
 	            contentType: "application/json",
