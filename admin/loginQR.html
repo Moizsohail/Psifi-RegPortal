@@ -123,7 +123,8 @@
 	            success:function(data, textStatus, jqXHR) {
 	                console.log(data)
 	                if(data['status']==200){
-	                    
+                        sessionStorage['token'] = data['token'];
+                        window.location.href="admin/voucherQR.html?token="+ sessionStorage['token'];
 	                }
 	                else{
 	                    alert(data['message'])
